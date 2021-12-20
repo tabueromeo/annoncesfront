@@ -2,6 +2,7 @@ import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink} fr
 
 import Menu from './Menu';
 import AnnoncesList from './AnnoncesList';
+import AnnonceDetail from './AnnonceDetail';
 
 function Home(){
     return(
@@ -9,7 +10,7 @@ function Home(){
             <div>
                 <Menu/>
             </div>
-                <AnnoncesList/>
+                <AnnonceDetail/>
             <div>
                 
             </div>

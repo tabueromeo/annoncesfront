@@ -5,12 +5,16 @@ function AnnonceItem(){
     return(
         <div className='div_item_annonce'>
             <Card>
-            <CardImg
-            src={rezise+"https://res.cloudinary.com/dzjjthglw/image/upload/v1639741713/sample.jpg"}
-            top
-            className='image_annonce'
-     
-            />
+            <div>
+                <img
+                src={rezise+"https://res.cloudinary.com/dzjjthglw/image/upload/v1639741713/sample.jpg"}
+                
+                className='image_annonce'
+            
+                />
+            </div>
+
+            <div>
             <CardBody>
             <CardTitle tag="h5">
                 Card title
@@ -24,10 +28,9 @@ function AnnonceItem(){
             <CardText>
                 This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
             </CardText>
-            <Button>
-                Button
-            </Button>
             </CardBody>
+            </div>
+
         </Card>
         </div>
     )
