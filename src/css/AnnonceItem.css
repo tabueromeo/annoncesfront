@@ -1,0 +1,11 @@
+.card{
+ display: flex;
+ flex-direction: row;
+}
+.div_item_annonce{
+    max-height: 20rem;
+    max-width: 90%;
+}
+.image_annonce{
+    max-width: 30em;
+}
