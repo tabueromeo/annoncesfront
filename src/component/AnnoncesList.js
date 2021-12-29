@@ -1,4 +1,5 @@
 import { CardGroup, Card, CardImg, CardBody, CardTitle, CardSubtitle,  CardText, Button} from 'reactstrap'
+import { Link } from "react-router-dom";
 import AnnonceItem from './AnnonceItem';
 
 function AnnoncesList(){
@@ -11,7 +12,7 @@ for (let index = 0; index < 10; index++) {
     return(
         <CardGroup>
         {array.map((index)=>{
-           return <AnnonceItem/>
+           return <Link to={`/Detail/${index}`}  ><AnnonceItem/></Link>
         })} 
         </CardGroup>
     )

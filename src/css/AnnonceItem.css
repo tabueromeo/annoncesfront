@@ -1,16 +1,29 @@
-.card{
- display: flex;
- flex-direction: row;
 
-}
+@media(min-width: 600px) {
+ 
+  .card{
+    display: flex;
+    flex-direction: row;
+   
+   }
+   .image_annonce{
+    max-width: 20em;
+    }
+
+    .liste_annonce_principale{
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 70%;
+  
+    }
+} 
+
+
 .div_item_annonce{
-    max-width: 90%;
     margin: 0.2em;
 }
 
-.image_annonce{
-max-width: 20em;
-}
+
 
 .annonceDetailContainer{
    max-width: 50%;
@@ -22,3 +35,60 @@ max-width: 20em;
     margin-left: auto;
     margin-right: auto;
 }
+a:-webkit-any-link {
+    text-decoration: none;
+    color: inherit;
+  }
+ 
+
+  .formulaire_entete{
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  @media (min-width: 600px) and (max-width: 950px) {
+ 
+    .card{
+      display: flex;
+      flex-direction: row;
+     
+     }
+     .image_annonce{
+      max-width: 100%;
+
+      }
+
+      .liste_annonce_principale{
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 95%;
+    
+      }
+
+  } 
+
+  .div_contenant_image_annonce{
+    margin: auto;
+  }
+
+  @media (max-width: 600px) {
+ 
+    .card{
+      display: flex;
+      flex-direction: column;
+     
+     }
+     .image_annonce{
+      max-width: 100%;
+      
+      }
+
+      .liste_annonce_principale{
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 95%;
+    
+      }
+
+  } 

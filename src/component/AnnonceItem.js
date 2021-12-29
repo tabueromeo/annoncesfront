@@ -5,7 +5,7 @@ function AnnonceItem(){
     return(
         <div className='div_item_annonce'>
             <Card>
-            <div>
+            <div className='div_contenant_image_annonce'>
                 <img
                 src={rezise+"https://res.cloudinary.com/dzjjthglw/image/upload/v1639741713/sample.jpg"}
                 

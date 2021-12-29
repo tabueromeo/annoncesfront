@@ -1,20 +1,30 @@
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink} from 'reactstrap';
+import {
+    BrowserRouter,
+    Routes,
+    Route
+  } from "react-router-dom";
 
-import Menu from './Menu';
+import SearchBar from './SearchBar';
 import AnnoncesList from './AnnoncesList';
-import AnnonceDetail from './AnnonceDetail';
+
+
 
 function Home(){
     return(
         <div>
+            
+                
+
+            <div   className='liste_annonce_principale'>
             <div>
-                <Menu/>
+                <SearchBar/>
             </div>
-                <AnnonceDetail/>
-            <div>
+            <AnnoncesList />
                 
             </div>
-</div>
+
+        </div>
     )
 }
 

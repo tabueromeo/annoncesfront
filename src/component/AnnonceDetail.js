@@ -1,8 +1,11 @@
 
 import react from 'react';
+import { useParams } from 'react-router-dom';
 import { UncontrolledCarousel } from 'reactstrap';
 
 function AnnonceDetail(){
+    let params = useParams()
+    console.log(params.index)
 
     return(
         <div className='annonceDetailContainer'>

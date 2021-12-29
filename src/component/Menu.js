@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownItem, NavbarText, DropdownMenu, DropdownToggle} from 'reactstrap';
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownItem, NavbarText, DropdownMenu, DropdownToggle, Button} from 'reactstrap';
 
 function Menu(){
     const [isOpen, setIsOpen]= React.useState(false)
@@ -55,9 +55,19 @@ function Menu(){
                 </DropdownMenu>
                 </UncontrolledDropdown>
             </Nav>
-            <NavbarText>
-                Simple Text
-            </NavbarText>
+            
+                <div>
+                <Button outline>
+                    Mon compte
+                </Button>
+                {' '}
+                <Button
+                    color="primary"
+                >
+                    Publiez une annonce
+                </Button>
+                </div>
+
             </Collapse>
         </Navbar>
 </div>
