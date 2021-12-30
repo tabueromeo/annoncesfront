@@ -13,7 +13,7 @@ export class ModifSupp extends Component {
    
     componentDidMount() {
 
-        axios.get('http://178.62.79.111:5000/annonces/read')
+        axios.get('http://178.62.79.111:5000/annonces/readannonce')
         .then(res => {
           const annonces = res.data;
           this.setState({ data : annonces });
