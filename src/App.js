@@ -7,6 +7,12 @@ import {
 
 import Menu from './component/Menu';
 import AnnonceDetail from './component/AnnonceDetail';
+import ModifSupp from "./component/ModifSupp";
+import CreateModifAnnonce from "./component/CreateModifAnnonce";
+import AddCategorie from "./component/Categorie/AddCategorie";
+import UpdatedCategorie from "./component/Categorie/UpdatedCategorie";
+import IndexCategorie from "./component/Categorie/IndexCategorie";
+import DeleteCategorie from "./component/Categorie/DeleteCategorie";
 
 import Home from './component/Home';
 
@@ -24,6 +30,14 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/Detail/:index" element={<AnnonceDetail />} />
+                    <Route path = "/createmodifannonce/:id" element={<CreateModifAnnonce />}/>
+                    <Route path = "/modifierannonces/" element={<ModifSupp />} />
+
+                    <Route path="/admin/categorie" element={<IndexCategorie />} />
+                    <Route path="/admin/categorie/add" element={<AddCategorie />} />
+                    <Route path="/admin/categorie/edit" element={<UpdatedCategorie />} />
+                    <Route path="/admin/categorie/delete" element={<DeleteCategorie />} />
+
                 </Routes>
             </BrowserRouter>,
                 
