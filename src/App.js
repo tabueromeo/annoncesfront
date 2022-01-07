@@ -13,6 +13,8 @@ import AddCategorie from "./component/Categorie/AddCategorie";
 import UpdatedCategorie from "./component/Categorie/UpdatedCategorie";
 import IndexCategorie from "./component/Categorie/IndexCategorie";
 import DeleteCategorie from "./component/Categorie/DeleteCategorie";
+import Login from './component/user/Login';
+import SignUp from './component/user/SignUp';
 
 import Home from './component/Home';
 
@@ -32,6 +34,9 @@ function App() {
                     <Route path="/Detail/:index" element={<AnnonceDetail />} />
                     <Route path = "/createmodifannonce/:id" element={<CreateModifAnnonce />}/>
                     <Route path = "/modifierannonces/" element={<ModifSupp />} />
+
+                    <Route path = "/login/" element={<Login />} />
+                    <Route path = "/signup/" element={<SignUp />} />
 
                     <Route path="/admin/categorie" element={<IndexCategorie />} />
                     <Route path="/admin/categorie/add" element={<AddCategorie />} />
