@@ -1,8 +1,15 @@
 import React from 'react';
+
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownItem, NavbarText, DropdownMenu, DropdownToggle, Button} from 'reactstrap';
 
 function Menu(){
     const [isOpen, setIsOpen]= React.useState(false)
+
+  const  handlelogin=()=>{
+       console.log(" bouton cliqué");
+  
+       window.location.href='/login//'
+    }
 
     return(
 
@@ -57,7 +64,7 @@ function Menu(){
             </Nav>
             
                 <div>
-                <Button outline>
+                <Button outline onClick={handlelogin}>
                     Mon compte
                 </Button>
                 {' '}

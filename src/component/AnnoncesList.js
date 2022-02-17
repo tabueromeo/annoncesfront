@@ -12,7 +12,7 @@ for (let index = 0; index < 10; index++) {
     return(
         <CardGroup>
         {array.map((index)=>{
-           return <Link to={`/Detail/${index}`}  ><AnnonceItem/></Link>
+           return <Link to={`/Detail/${index}`} key={index} ><AnnonceItem/></Link>
         })} 
         </CardGroup>
     )

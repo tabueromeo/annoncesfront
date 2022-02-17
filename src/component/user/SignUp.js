@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 
 function SignUp(){
@@ -78,6 +79,8 @@ function SignUp(){
                 <Button>
                     S'inscrire
                 </Button>
+
+                <Link to={`/login`} > Se connecter</Link>
         </Form>
 </div>
     )

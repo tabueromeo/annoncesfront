@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
+
 
 function Login(){
     return(
@@ -38,6 +40,8 @@ function Login(){
                 <Button>
                     Connecter
                 </Button>
+                {'    '}
+                <Link to={`/signup`} > Créer un compte</Link>
         </Form>
 </div>
     )
