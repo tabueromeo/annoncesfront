@@ -1,6 +1,9 @@
 .card:hover{
   background-color: rgb(246, 250, 250);
 }
+.card{
+  box-shadow: 0px 10px 29px 0px #e0e0e0;
+}
 
 @media(min-width: 600px) {
  
@@ -11,7 +14,7 @@
    
    }
    .image_annonce{
-    max-width: 20em;
+    max-width: 15em;
     }
 
     .liste_annonce_principale{
