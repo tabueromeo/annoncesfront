@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import React from "react"
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import axios from 'axios'
+import { SERVER } from "../../config/config";
+import sha256 from "sha256";
 
 function SignUp(){
     const [user, setUser] = React.useState({});
@@ -10,18 +12,35 @@ function SignUp(){
     function handleChange(e){
         
      
-        let usertmps = user
-         usertmps[e.target.name]=e.target.value;
+        if(e.target.name==="password"){
+            
+            let usertmps = user
+         usertmps[e.target.name]=sha256(e.target.value);
         setUser(usertmps)
+        
+        }else if(e.target.name==="passwordcm"){
+            let usertmps = user
+                if(usertmps["password"]===sha256(e.target.value)){
+
+            }else{
+                
+            }
+
+        }else{
+            let usertmps = user
+            usertmps[e.target.name]=e.target.value;
+            setUser(usertmps)
+        }
+        
         
         
         
     }
     
     function handleSubmit(e){
-        
-        console.log(user)
-        axios.post("http://137.184.225.204:5000/",user).then((response) => {
+       
+        axios.post(SERVER+"/user/signup",user).then((response) => {
+            localStorage.setItem('keylogtoken', JSON.stringify(response.data));
       console.log(response)
     }, (error) => {
       console.log(error);
@@ -57,7 +76,7 @@ function SignUp(){
             <FormGroup>
                 <Input
                 id="exampleNumber"
-                name="telephone"
+                name="age"
                 placeholder="âge"
                 type="number"
                 onChange={handleChange}
@@ -92,7 +111,7 @@ function SignUp(){
                     id="examplePassword"
                     name="password"
                     placeholder="Password"
-                    type="mot de passe"
+                    type="password"
                     onChange={handleChange}
                     />
                 </FormGroup>
@@ -108,7 +127,7 @@ function SignUp(){
                     id="examplePassword"
                     name="passwordcm"
                     placeholder="Conifrm password"
-                    type="mot de passe"
+                    type="password"
                     onChange={handleChange}
                     />
                 </FormGroup>
