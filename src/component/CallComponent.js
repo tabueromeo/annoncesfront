@@ -1,14 +1,15 @@
 import { Card, CardTitle, CardText, Button, Col } from 'reactstrap';
 
-function CallComponent(){
+function CallComponent(props){
+  console.log(props)
     return(
         <Col sm="6">
         <Card body>
       <CardTitle tag="h5">
-        Special Title Treatment
+        {props.annonce.title}
       </CardTitle>
       <CardText>
-        With supporting text below as a natural lead-in to additional content.
+      {props.annonce.description}
       </CardText>
       <Button>
         Go somewhere

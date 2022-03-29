@@ -1,19 +1,35 @@
+import {useEffect, useState} from "react"
 import { CardGroup, Card, CardImg, CardBody, CardTitle, CardSubtitle,  CardText, Button} from 'reactstrap'
 import { Link } from "react-router-dom";
 import AnnonceItem from './AnnonceItem';
+import config from "../config/config";
+import axios from "axios";
+import { createPortal } from "react-dom";
+
 
 function AnnoncesList(){
-  
-var array =[]
-for (let index = 0; index < 10; index++) {
-  array.push(index);  
-}
+
+
+const [array,setArray] = useState([])
+
+useEffect(() => {
+  axios.get(config.SERVER+`/annonces/readannonce`)
+        .then(res => {
+          const tmps = res.data
+          setArray(
+            tmps
+          )
+        }).catch(erreur =>{
+          //alert("serveur indisponible")
+          console.log(erreur);
+      })
+},[]);
 
     return(
         <CardGroup>
-        {array.map((index)=>{
-           return <Link to={`/Detail/${index}`} key={index} ><AnnonceItem/></Link>
-        })} 
+        {array.length>0?(array.map((annonce,index)=>{
+           return <Link to={`/Detail/${annonce._id}`} key={index} ><AnnonceItem description={annonce.description} title={annonce.title} images={annonce.images} date = {annonce.date}/></Link>
+        })):""} 
         </CardGroup>
     )
 

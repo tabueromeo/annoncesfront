@@ -1,13 +1,15 @@
 import { CardGroup, Card, CardImg, CardBody, CardTitle, CardSubtitle,  CardText, Button} from 'reactstrap'
 import '../css/AnnonceItem.css'
-function AnnonceItem(){
-    let rezise = "https://res.cloudinary.com/dzjjthglw/image/fetch/h_270/"
+import config from '../config/config'
+function AnnonceItem(props){
+
+    console.log(props)
     return(
         <div className='div_item_annonce'>
             <Card>
             <div className='div_contenant_image_annonce'>
                 <img
-                src={rezise+"https://res.cloudinary.com/dzjjthglw/image/upload/v1639741713/sample.jpg"}
+                src={config.rezise+props.images}
                 
                 className='image_annonce'
             
@@ -17,16 +19,16 @@ function AnnonceItem(){
             <div>
             <CardBody>
             <CardTitle tag="h5">
-                Card title
+                {props.title}
             </CardTitle>
             <CardSubtitle
                 className="mb-2 text-muted"
                 tag="h6"
             >
-                Card subtitle
+                {props.date.split('T')[0]}
             </CardSubtitle>
             <CardText>
-                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                {props.description}
             </CardText>
             </CardBody>
             </div>

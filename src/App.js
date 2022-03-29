@@ -28,10 +28,10 @@ function App() {
                 
 
             <div >
-            <BrowserRouter>
+           
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/Detail/:index" element={<AnnonceDetail />} />
+                    <Route path="/Detail/:id" element={<AnnonceDetail />} />
                     <Route path = "/createmodifannonce/:id" element={<CreateModifAnnonce />}/>
                     <Route path = "/modifierannonces/" element={<ModifSupp />} />
 
@@ -44,7 +44,7 @@ function App() {
                     <Route path="/admin/categorie/delete" element={<DeleteCategorie />} />
 
                 </Routes>
-            </BrowserRouter>,
+           
                 
             </div>
 

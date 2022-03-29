@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import config from '../config/config';
 
  class CreateModifAnnonce extends Component {
 
@@ -9,32 +10,51 @@ import axios from 'axios';
         this.state = {
             dataForm : {},
             clogImageUpload : "",
+            images:[],
+            url:[],
         }
     }
 
+    componentDidMount(){
+        console.log("entréeeeee")
+    }
+
     handleChange = (e) =>{
-        const dataFormTemp = this.state.dataForm
-        dataFormTemp[e.target.name] = e.target.value
-        this.setState({dataForm : dataFormTemp})
-        console.log(this.state.dataForm)
+
+        let name = e.target.name
+
+        if (name === 'images') {
+            let img = URL.createObjectURL(e.target.files[0])
+            let imgUrl = e.target.files[0]
+            let images = this.state.images
+            let url = this.state.url
+            images.push(img)
+            url.push(imgUrl)
+            this.setState({
+               images,
+               url,
+            })
+            console.log(images)
+         }else{
+            const dataFormTemp = this.state.dataForm
+            dataFormTemp[e.target.name] = e.target.value
+            this.setState({dataForm : dataFormTemp})
+            console.log(this.state.dataForm)
+         }
+       
     }
-    handleChangeImage = (e) =>{
-        let imageTemp = URL.createObjectURL(e.target.files[0])
-        this.setState({clogImageUpload : e.target.files[0]})
-        const dataFormTemp = this.state.dataForm
-        dataFormTemp["photo"] = imageTemp
-        this.setState({dataForm:dataFormTemp})
-        console.log(this.state.clogImageUpload)  
-        
-    }
+
+    
 
      handlesubmit = (e) =>{
         
-        console.log(this.state.clogImageUpload)
+        console.log(this.state.images)
         const formData = new FormData()
-
-        formData.append('file', this.state.clogImageUpload)
-        formData.append('upload_preset', 'yaya12')
+        if(this.state.url.length>0){
+            formData.append('file', this.state.url[0])
+        }
+        
+        formData.append('upload_preset', 'ksgff1pb')
 
         const option = {
             method : 'POST',
@@ -42,13 +62,13 @@ import axios from 'axios';
         }
 
 
-        axios.post(`https://api.cloudinary.com/v1_1/dbcjapvf8/image/upload`,  formData)
+        axios.post(`https://api.cloudinary.com/v1_1/serpoma/image/upload`,  formData)
         .then(res => {
           console.log(res.data);
           let temp = this.state.dataForm
-          temp['photo'] = res.data.url
+          temp['images'] = res.data.url
           this.setState({ dataForm : temp })
-          axios.post(`http://178.62.79.111:5000/annonces/addannonce`,  this.state.dataForm )
+          axios.post(config.SERVER+`/annonces/addannonce`,  this.state.dataForm )
         .then(res => {
             console.log(res.data)
            //this.setState({ clog : res.data})
@@ -75,6 +95,8 @@ import axios from 'axios';
     
 
    render() {
+       const {dataForm} = this.state;
+       
         return (
             <div>
                 <div className="container">
@@ -92,29 +114,54 @@ import axios from 'axios';
                                     </select>
 					                </div>
                                     <div className="form-group">
-                                    <label>Libellé</label>
-                                    <input type="text" className="form-control" name = "wording" onChange ={this.handleChange} />
+                                    <label>Titre</label>
+                                    <input type="text" className="form-control" name = "title" onChange ={this.handleChange} />
 					                </div>
                                     <div className="form-group">
-                                    <label>description</label>
-                                    <textarea className="form-control" type="textarea"  maxlength="140" rows="7" name = "description" onChange ={this.handleChange}/>
+                                    <label>Description</label>
+                                    <textarea className="form-control" type="textarea" rows="7" name = "description" onChange ={this.handleChange}/>
                                     </div>
-                                    <div className="form-group">
-                                        <label>Nombre de poste</label>
-                                        <input type="number" className="form-control" name = "postNumber " onChange ={this.handleChange} />
-					                </div>
+                                
                                     <div>
-                                        <input type = "file" accept = "image" onChange = {this.handleChangeImage} name = "photo" />
-                                        {(this.state.dataForm['photo'] !== null)&&<div>
-                                            <img src = {this.state.dataForm['photo']} width = "100px" height ="100px"/>
-                                           {
-                                               <button className = "btn btn-danger" onClick = {() => {
-                                                this.setState({image : null})
-                                            }}>X</button>
-                                           }
-                                        </div>}
+                                        <div className="row row-cols-md-4 form-group  ">
+                  {this.state.images.length > 0 || this.state.images.length < 4
+                     ? this.state.images.map((image, index) => (
+                          <div key={index} className="col mt-4">
+                             <img
+                                src={image}
+                                alt=""
+                                className="img-responsive img-thumbnail"
+                                id="img-tache"
+                             />
+                          </div>
+                       ))
+                     : null}
+               </div>
+               {this.state.images.length < 4 ? (
+                  <div className="row row-cols-md-3 form-group  mt-3">
+                     <div className="form-group col mt-3">
+                        <div>
+                           <label
+                              className="btn btn-primary"
+                              htmlFor="img"
+                              type="button"
+                           >
+                              Entrer une image
+                              <input
+                                 type="file"
+                                 onChange={this.handleChange}
+                                 id="img"
+                                 className="form-control"
+                                 hidden
+                                 name="images"
+                              />
+                           </label>
+                        </div>
+                     </div>
+                  </div>
+               ) : null}
                                     </div>
-                                    <button type="button" id="submit" name="submit" className="btn-envoie" onClick={this.handlesubmit}>Submit Form</button>
+                                    <button type="button" id="submit" name="submit" className="btn-envoie" onClick={this.handlesubmit}>Enregistré</button>
                             </form>
                         </div>
                     </div>

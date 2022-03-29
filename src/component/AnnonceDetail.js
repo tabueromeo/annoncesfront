@@ -1,12 +1,29 @@
 
-import react from 'react';
+import react, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { UncontrolledCarousel } from 'reactstrap';
 import CallComponent from './CallComponent';
+import axios from 'axios';
+import config from "../config/config";
 
 function AnnonceDetail(){
     let params = useParams()
-    console.log(params.index)
+
+const [annonce,setArray] = useState({})
+
+    console.log(params)
+    useEffect(() => {
+        axios.get(config.SERVER+`/annonces/one?id=`+params.id)
+              .then(res => {
+                const tmps = res.data
+                setArray(
+                  tmps
+                )
+              }).catch(erreur =>{
+                //alert("serveur indisponible")
+                console.log(erreur);
+            })
+      },[]);
 
     return(
         <div className='annonceDetailContainer'>
@@ -19,7 +36,7 @@ function AnnonceDetail(){
                     {
 
                     key: 1,
-                    src: 'https://picsum.photos/id/123/1200/600'
+                    src: config.rezisecarrousel+ annonce.images
                     },
                     {
             
@@ -35,7 +52,7 @@ function AnnonceDetail(){
 
             </div>    
             <div className='callBoxDetailRight'>
-                <CallComponent/>
+                <CallComponent annonce ={annonce}/>
             </div>
            
 

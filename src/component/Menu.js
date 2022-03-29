@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownItem, NavbarText, DropdownMenu, DropdownToggle, Button} from 'reactstrap';
 
@@ -71,7 +72,7 @@ function Menu(){
                 <Button
                     color="primary"
                 >
-                    Publiez une annonce
+                   <Link to="/createmodifannonce/0">Publiez une annonce</Link> 
                 </Button>
                 </div>
 
