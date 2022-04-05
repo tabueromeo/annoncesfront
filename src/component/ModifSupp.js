@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import config from '../config/config'
 
 export class ModifSupp extends Component {
 
@@ -13,7 +14,7 @@ export class ModifSupp extends Component {
    
     componentDidMount() {
 
-        axios.get('http://178.62.79.111:5000/annonces/readannonce')
+        axios.get(config.SERVER+'/annonces/readannonce')
         .then(res => {
           const annonces = res.data;
           this.setState({ data : annonces });
@@ -31,9 +32,9 @@ export class ModifSupp extends Component {
                 <div>
                 {
                    this.state.data.map((item, index) => {
-                       return<div key = {item.id} className = "container">
-                               <div>
-                                    <img src = "/image.jpg" width = "300px" height = "300px" />
+                       return<div key = {index} className = "container">
+                               <div >
+                                    <img src = {config.rezise+item.images} />
                                 </div>
                                 <div className = "contInner" >
                                     <div>
@@ -41,7 +42,7 @@ export class ModifSupp extends Component {
                                         <p>{item.description}</p>
                                     </div>
                                     <div>
-                                        <Link to = {"/createmodifannonce/"+index}><button className = "modif">modifier</button></Link>
+                                        <Link to = {"/createmodifannonce/"+item.id}><button className = "modif">modifier</button></Link>
                                         <button className = "supp" onClick = {
                                             () =>{
                                                 this.state.data.splice(item, 1)

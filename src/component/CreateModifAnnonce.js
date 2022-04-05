@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import 'react-toastify/dist/ReactToastify.css';
+
 import config from '../config/config';
 
  class CreateModifAnnonce extends Component {
@@ -71,7 +75,7 @@ import config from '../config/config';
           axios.post(config.SERVER+`/annonces/addannonce`,  this.state.dataForm )
         .then(res => {
             console.log(res.data)
-           //this.setState({ clog : res.data})
+           toast("Annonce ajoutée")
         }).catch(erreur =>{
             alert("serveur indisponible")
             console.log(erreur);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
@@ -99,26 +103,38 @@ import config from '../config/config';
        
         return (
             <div>
-                <div className="container">
-                    <div className="col-md-5">
+                <div className="container-addannonce">
+                <ToastContainer />
+                    <div >
                         <div className="form-area">
-                            <form role="form">
+                            <Form role="form">
                                 <br/>
-                                    <h3>INFO ANNONCE</h3>
+                                    <h3>Ajouter une annonce</h3>
+                                    
+                                    <FormGroup> 
+                                    <Label>Catégorie</Label>
+                                <Input
+                                    className="mb-3"
+                                    type="select"
+                                    onChange={this.handleChange}
+                                    name ="category"
+                                >
+                                    <option value={"1"}>
+                                    1
+                                    </option>
+                                    <option value={"2"}>
+                                    Douala
+                                    </option>
+                                    
+                                </Input>
+
+                                </FormGroup>
                                     <div className="form-group">
-                                    <label>Catégorie</label>
-                                    <select id="pet-select" name ="category" onChange ={this.handleChange}>
-                                        <option value = "1">1</option>   
-                                        <option value ="2">2</option>   
-                                        <option value ="3">3</option>   
-                                    </select>
+                                    <Label>Titre</Label>
+                                    <Input type="text" className="form-control" name = "title" onChange ={this.handleChange} />
 					                </div>
                                     <div className="form-group">
-                                    <label>Titre</label>
-                                    <input type="text" className="form-control" name = "title" onChange ={this.handleChange} />
-					                </div>
-                                    <div className="form-group">
-                                    <label>Description</label>
+                                    <Label>Description</Label>
                                     <textarea className="form-control" type="textarea" rows="7" name = "description" onChange ={this.handleChange}/>
                                     </div>
                                 
@@ -138,7 +154,7 @@ import config from '../config/config';
                      : null}
                </div>
                {this.state.images.length < 4 ? (
-                  <div className="row row-cols-md-3 form-group  mt-3">
+                  <div >
                      <div className="form-group col mt-3">
                         <div>
                            <label
@@ -147,7 +163,7 @@ import config from '../config/config';
                               type="button"
                            >
                               Entrer une image
-                              <input
+                              <Input
                                  type="file"
                                  onChange={this.handleChange}
                                  id="img"
@@ -161,8 +177,10 @@ import config from '../config/config';
                   </div>
                ) : null}
                                     </div>
-                                    <button type="button" id="submit" name="submit" className="btn-envoie" onClick={this.handlesubmit}>Enregistré</button>
-                            </form>
+                                    
+                                    <Button  name="submit" onClick={this.handlesubmit} className="buton-submit-annonce">Publier</Button>
+                           
+                            </Form>
                         </div>
                     </div>
                 </div>

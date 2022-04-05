@@ -26,7 +26,7 @@ useEffect(() => {
 },[]);
 
     return(
-        <CardGroup>
+        <CardGroup >
         {array.length>0?(array.map((annonce,index)=>{
            return <Link to={`/Detail/${annonce._id}`} key={index} ><AnnonceItem description={annonce.description} title={annonce.title} images={annonce.images} date = {annonce.date}/></Link>
         })):""} 

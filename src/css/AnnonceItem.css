@@ -4,33 +4,47 @@
 .card{
   box-shadow: 0px 10px 29px 0px #e0e0e0;
 }
+.card-group{
+  margin: auto;
+  }
 
-@media(min-width: 600px) {
+
+@media(min-width: 950px) {
  
   .card{
     display: flex;
     flex-direction: row;
-  
-   
+    width: 70vw;
    }
    .image_annonce{
-    max-width: 15em;
+    max-height: 200px;  
     }
-
-    .liste_annonce_principale{
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 70%;
+    .div_contenant_image_annonce{
+      margin: auto;
+      padding: auto;
+      max-width: 30%
+    }
+    .div_contenant_texte_annonce{
+      margin: auto;
+      padding: auto;
+      width: 70%;
+    }
   
-    }
+
+
 } 
 
 
-.div_item_annonce{
-    margin: 0.2em;
+.liste_annonce_principale{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95%;      
+
 }
+.div_item_annonce{
+  margin: 0.2em;
 
-
+}
 
 
 .annonceDetailContainer{
@@ -64,30 +78,34 @@ a:-webkit-any-link {
 
   }
 
-  @media (min-width: 600px) and (max-width: 950px) {
+  @media (min-width: 600px) and (max-width: 949px) {
  
     .card{
       display: flex;
       flex-direction: row;
+      width: 70vw;
      
      }
      .image_annonce{
       max-width: 100%;
+      max-height: 200px;
 
       }
 
-      .liste_annonce_principale{
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 95%;
-    
+     
+      .div_contenant_image_annonce{
+        margin: auto;
+        max-width: 30%;
+      }
+      .div_contenant_texte_annonce{
+        min-width: 70%;
       }
 
   } 
 
-  .div_contenant_image_annonce{
-    margin: auto;
-  }
+
+
+ 
 
   @media (max-width: 600px) {
  
@@ -101,11 +119,10 @@ a:-webkit-any-link {
       
       }
 
-      .liste_annonce_principale{
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 95%;
     
+      .div_contenant_image_annonce{
+        margin: auto;
       }
+
 
   } 

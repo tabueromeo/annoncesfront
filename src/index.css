@@ -1,28 +1,57 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-@media(min-width: 600px) {
+@media (min-width: 1050px) {
+  .container-addannonce {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    max-width: 50%;
+    box-sizing: border-box;
+    padding: 30px 30px;
+    border-radius: 3px;
+    box-shadow: 0px 3px 6px 0px #e0e0e0;
+  }
 
+  .buton-submit-annonce {
+    margin-top: 10%;
+    margin-left: 85%;
+  }
 }
 
-
-@media (max-width: 600px) {
-
-
+@media (max-width: 1049px) {
+  .container-addannonce {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    max-width: 95%;
+    box-sizing: border-box;
+    padding: 30px 30px;
+    border-radius: 3px;
+    box-shadow: 0px 3px 6px 0px #e0e0e0;
+  }
+  .buton-submit-annonce {
+    margin-top: 10%;
+    margin-left: 80%;
+  }
 }
 
-.loginMaincontainer{
+input {
+  width: 100%;
+}
+
+.loginMaincontainer {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;

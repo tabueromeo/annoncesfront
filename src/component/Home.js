@@ -15,11 +15,11 @@ function Home(){
         <div>
             
                 
-
-            <div   className='liste_annonce_principale'>
-            <div>
+<div>
                 <SearchBar/>
             </div>
+            <div   className='liste_annonce_principale'>
+            
             <AnnoncesList />
                 
             </div>

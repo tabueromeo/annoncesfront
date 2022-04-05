@@ -16,7 +16,7 @@ function AnnonceItem(props){
                 />
             </div>
 
-            <div>
+            <div className='div_contenant_texte_annonce'>
             <CardBody>
             <CardTitle tag="h5">
                 {props.title}
