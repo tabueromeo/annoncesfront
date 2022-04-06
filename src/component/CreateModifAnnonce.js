@@ -43,7 +43,7 @@ import config from '../config/config';
             const dataFormTemp = this.state.dataForm
             dataFormTemp[e.target.name] = e.target.value
             this.setState({dataForm : dataFormTemp})
-            console.log(this.state.dataForm)
+           // console.log(this.state.dataForm)
          }
        
     }
@@ -71,7 +71,10 @@ import config from '../config/config';
           console.log(res.data);
           let temp = this.state.dataForm
           temp['images'] = res.data.url
+          // ajout de l'id utilisateur
+          temp['iduser']=JSON.parse(localStorage.getItem('userid'))
           this.setState({ dataForm : temp })
+
           axios.post(config.SERVER+`/annonces/addannonce`,  this.state.dataForm )
         .then(res => {
             console.log(res.data)

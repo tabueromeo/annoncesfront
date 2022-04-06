@@ -4,6 +4,7 @@ import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import axios from 'axios'
 import { SERVER } from "../../config/config";
 import sha256 from "sha256";
+import { bodyOpenClassName } from "react-modal/lib/components/Modal";
 
 function Login(){
     const [user, setUser] = React.useState({});
@@ -30,18 +31,15 @@ function Login(){
     }
     
     function handleSubmit(e){
-        console.log("soumission")
-    axios.get(SERVER+"/user/login", {
-        headers: {
-            'Authorization' :`bearer ${JSON.parse(localStorage.getItem('keylogtoken'))}`,
-        }
-    })
-    .then(response => {
-        console.log(response)
-    })
-    .catch((error) => {
-        console.log(error)
+        console.log(user)
+        axios.post(SERVER+"/user/login",user).then((response) => {
+            localStorage.setItem('keylogtoken', JSON.stringify(response.data.token));
+            localStorage.setItem('userid', JSON.stringify(response.data._id));
+            window.location.href='/modifierannonces/'
+    }, (error) => {
+      console.log(error);
     });
+
     
     
         e.preventDefault()

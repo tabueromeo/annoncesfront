@@ -3,7 +3,7 @@ import '../css/AnnonceItem.css'
 import config from '../config/config'
 function AnnonceItem(props){
 
-    console.log(props)
+  //  console.log(props)
     return(
         <div className='div_item_annonce'>
             <Card>
@@ -28,7 +28,7 @@ function AnnonceItem(props){
                 {props.date.split('T')[0]}
             </CardSubtitle>
             <CardText>
-                {props.description}
+                {props.description.length>80?props.description.slice(0,80)+"...":props.description}
             </CardText>
             </CardBody>
             </div>

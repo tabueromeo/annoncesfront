@@ -11,10 +11,11 @@ function AnnonceDetail(){
 
 const [annonce,setArray] = useState({})
 
-    console.log(params)
+    
     useEffect(() => {
         axios.get(config.SERVER+`/annonces/one?id=`+params.id)
               .then(res => {
+                  console.log(res.data)
                 const tmps = res.data
                 setArray(
                   tmps

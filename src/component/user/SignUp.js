@@ -40,8 +40,9 @@ function SignUp(){
     function handleSubmit(e){
        
         axios.post(SERVER+"/user/signup",user).then((response) => {
-            localStorage.setItem('keylogtoken', JSON.stringify(response.data));
-      console.log(response)
+            localStorage.setItem('keylogtoken', JSON.stringify(response.data.token));
+            localStorage.setItem('userid', JSON.stringify(response.data._id));
+            console.log(response.data)
     }, (error) => {
       console.log(error);
     });

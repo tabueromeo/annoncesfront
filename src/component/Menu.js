@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import config from '../config/config';
 
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownItem, NavbarText, DropdownMenu, DropdownToggle, Button} from 'reactstrap';
 
@@ -7,9 +9,21 @@ function Menu(){
     const [isOpen, setIsOpen]= React.useState(false)
 
   const  handlelogin=()=>{
-       console.log(" bouton cliqué");
+       
+       axios.get(config.SERVER+"/user/logintoken", {
+        headers: {
+            'Authorization' :`bearer ${JSON.parse(localStorage.getItem('keylogtoken'))}`,
+        }
+    })
+    .then(response => {
+        localStorage.setItem('userid', JSON.stringify(response.data._id));
+        window.location.href='/modifierannonces/'
+    })
+    .catch((error) => {
+        window.location.href='/login/'
+    });
+
   
-       window.location.href='/login//'
     }
 
     return(
