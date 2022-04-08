@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import axios from 'axios'
 import { SERVER } from "../../config/config";
@@ -8,6 +8,7 @@ import { bodyOpenClassName } from "react-modal/lib/components/Modal";
 
 function Login(){
     const [user, setUser] = React.useState({});
+    let navigate = useNavigate();
     
     
     function handleChange(e){
@@ -35,7 +36,9 @@ function Login(){
         axios.post(SERVER+"/user/login",user).then((response) => {
             localStorage.setItem('keylogtoken', JSON.stringify(response.data.token));
             localStorage.setItem('userid', JSON.stringify(response.data._id));
-            window.location.href='/modifierannonces/'
+
+       navigate("/modifierannonces");
+
     }, (error) => {
       console.log(error);
     });

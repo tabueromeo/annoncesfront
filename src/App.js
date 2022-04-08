@@ -35,8 +35,8 @@ function App() {
                     <Route path = "/createmodifannonce/:id" element={<CreateModifAnnonce />}/>
                     <Route path = "/modifierannonces/" element={<ModifSupp />} />
 
-                    <Route path = "/login/" element={<Login />} />
-                    <Route path = "/signup/" element={<SignUp />} />
+                    <Route path = "/login" element={<Login />} />
+                    <Route path = "/signup" element={<SignUp />} />
 
                     <Route path="/admin/categorie" element={<IndexCategorie />} />
                     <Route path="/admin/categorie/add" element={<AddCategorie />} />

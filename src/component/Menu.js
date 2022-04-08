@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import config from '../config/config';
 
@@ -7,6 +7,7 @@ import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Un
 
 function Menu(){
     const [isOpen, setIsOpen]= React.useState(false)
+    let navigate = useNavigate();
 
   const  handlelogin=()=>{
        
@@ -17,10 +18,11 @@ function Menu(){
     })
     .then(response => {
         localStorage.setItem('userid', JSON.stringify(response.data._id));
-        window.location.href='/modifierannonces/'
+     
+       navigate("/modifierannonces");
     })
     .catch((error) => {
-        window.location.href='/login/'
+       navigate("/login");
     });
 
   
