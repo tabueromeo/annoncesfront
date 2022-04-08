@@ -46,6 +46,9 @@ code {
     margin-left: 80%;
   }
 }
+.image_modifsupp {
+  max-width: 270px;
+}
 
 input {
   width: 100%;

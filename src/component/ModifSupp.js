@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import config from '../config/config'
+import {Card,CardBody,Button,CardTitle, CardSubtitle,  CardText} from 'reactstrap'
 
 export class ModifSupp extends Component {
 
@@ -26,36 +27,50 @@ export class ModifSupp extends Component {
     
 
     render() {
-        console.log(this.state.data)
+       // console.log(this.state.data)
         return (
-            <div>
-                <div>
+            <div className='div_item_annonce'>
+               
                 {
                    this.state.data.map((item, index) => {
-                       return<div key = {index} className = "container">
-                               <div >
-                                    <img src = {config.rezise+item.images} />
+                       return <Card>
+                               <div   className='div_contenant_image_annonce'>
+                                    <img src = {config.rezise+item.images}  className='image_annonce'/>
                                 </div>
-                                <div className = "contInner" >
-                                    <div>
-                                        <h2>{item.wording}</h2>
-                                        <p>{item.description}</p>
-                                    </div>
-                                    <div>
-                                        <Link to = {"/createmodifannonce/"+item.id}><button className = "modif">modifier</button></Link>
-                                        <button className = "supp" onClick = {
+                                <div className='div_contenant_texte_annonce'>
+                                <CardBody>
+                                <CardTitle tag="h5">
+                                                {item.title}
+                                                
+                                            </CardTitle>
+                                            <CardSubtitle
+                                                className="mb-2 text-muted"
+                                                tag="h6"
+                                            >
+                                                {item.date.split('T')[0]}
+                                            </CardSubtitle>
+                                            <CardText>
+                                                {item.description.length>80?item.description.slice(0,80)+"...":item.description}
+                                            </CardText>
+
+                                        
+                                        <Link to = {"/createmodifannonce/"+item.id}><Button className = "modif">modifier</Button></Link>
+                                        <Button className = "suppression_detail" onClick = {
                                             () =>{
                                                 this.state.data.splice(item, 1)
                                                 console.log(this.state.data.length)
                                             }
-                                        }>supprimer</button>
-                                    </div>
+                                        }>supprimer</Button>
+                                   
+                                    </CardBody>
                                 </div>
-                            </div>
+                           
+                            
+                            </Card>
                    })
                 }
                 
-                </div>
+               
             </div>
         )
     }
