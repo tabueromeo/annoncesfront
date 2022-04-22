@@ -4,7 +4,6 @@ import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import axios from 'axios'
 import { SERVER } from "../../config/config";
 import sha256 from "sha256";
-import { bodyOpenClassName } from "react-modal/lib/components/Modal";
 
 function Login(){
     const [user, setUser] = React.useState({});

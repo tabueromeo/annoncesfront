@@ -33,6 +33,11 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .callBoxDetailRight .card {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+  }
 }
 
 .liste_annonce_principale {
@@ -46,11 +51,6 @@
 
 .annonceDetailItemCarroussel {
   max-width: 100%;
-}
-
-.callBoxDetailRight .card {
-  display: flex;
-  flex-direction: column;
 }
 
 a:-webkit-any-link {
@@ -87,6 +87,12 @@ a:-webkit-any-link {
     margin-left: auto;
     margin-right: auto;
   }
+
+  .callBoxDetailRight .card {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+  }
 }
 
 @media (max-width: 600px) {
@@ -106,5 +112,10 @@ a:-webkit-any-link {
     max-width: 98%;
     margin-left: auto;
     margin-right: auto;
+  }
+  .callBoxDetailRight .card {
+    display: flex;
+    flex-direction: column;
+    width: 98vw;
   }
 }

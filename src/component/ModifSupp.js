@@ -12,17 +12,34 @@ export class ModifSupp extends Component {
             data : []
         }
     }
-   
-    componentDidMount() {
+
+    deleteAnnonce=(e)=>{
+        axios.post(config.SERVER+`/annonces/deleteannonce`,{id:e.target.name})
+        .then(res => {
+            
+            this.getAllUserAnnonce()
+        }).catch(erreur =>{
+          //alert("serveur indisponible")
+          console.log(erreur);
+      })
+
+
+    }
+
+    getAllUserAnnonce=()=>{
 
         axios.get(config.SERVER+'/annonces/readannonce')
         .then(res => {
           const annonces = res.data;
           this.setState({ data : annonces });
-          console.log(this.state.data)
+      
         }).catch(error => {
             alert("serveur indisponible")
-        })      
+        })  
+    }
+   
+    componentDidMount() {
+        this.getAllUserAnnonce()
     }
     
 
@@ -54,12 +71,8 @@ export class ModifSupp extends Component {
                                             </CardText>
 
                                         
-                                        <Link to = {"/createmodifannonce/"+item.id}><Button className = "modif">modifier</Button></Link>
-                                        <Button className = "suppression_detail" onClick = {
-                                            () =>{
-                                                this.state.data.splice(item, 1)
-                                                console.log(this.state.data.length)
-                                            }
+                                        <Link to = {"/updateannonce/"+item._id}><Button className = "modif">modifier</Button></Link>
+                                        <Button className = "suppression_detail" name={item._id} onClick = {this.deleteAnnonce
                                         }>supprimer</Button>
                                    
                                     </CardBody>

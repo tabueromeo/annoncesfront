@@ -15,7 +15,7 @@ import IndexCategorie from "./component/Categorie/IndexCategorie";
 import DeleteCategorie from "./component/Categorie/DeleteCategorie";
 import Login from './component/user/Login';
 import SignUp from './component/user/SignUp';
-
+import UpdateAnnonce from './component/UpdateAnnonce';
 import Home from './component/Home';
 
 function App() {
@@ -32,7 +32,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/Detail/:id" element={<AnnonceDetail />} />
-                    <Route path = "/createmodifannonce/:id" element={<CreateModifAnnonce />}/>
+                    <Route path = "/createmodifannonce/" element={<CreateModifAnnonce />}/>
+                    <Route path = "/updateannonce/:id" element={<UpdateAnnonce />}/>
                     <Route path = "/modifierannonces/" element={<ModifSupp />} />
 
                     <Route path = "/login" element={<Login />} />

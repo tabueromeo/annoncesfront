@@ -28,6 +28,26 @@ function Menu(){
   
     }
 
+    const  handleAddAnnonce=()=>{
+       
+        axios.get(config.SERVER+"/user/logintoken", {
+         headers: {
+             'Authorization' :`bearer ${JSON.parse(localStorage.getItem('keylogtoken'))}`,
+         }
+     })
+     .then(response => {
+         localStorage.setItem('userid', JSON.stringify(response.data._id));
+      
+        navigate("/createmodifannonce");
+     })
+     .catch((error) => {
+        navigate("/login");
+     });
+ 
+   
+     }
+ 
+
     return(
 
         <div>
@@ -87,8 +107,9 @@ function Menu(){
                 {' '}
                 <Button
                     color="primary"
+                    onClick={handleAddAnnonce}
                 >
-                   <Link to="/createmodifannonce/0">Publiez une annonce</Link> 
+                   Publiez une annonce
                 </Button>
                 </div>
 

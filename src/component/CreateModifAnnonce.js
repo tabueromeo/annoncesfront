@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
@@ -17,10 +18,15 @@ import config from '../config/config';
             images:[],
             url:[],
         }
+      
     }
 
     componentDidMount(){
-        console.log("entréeeeee")
+       if(this.props.match.param){
+           console.log(this.props)
+       }else{
+           console.log("ajout")
+       }
     }
 
     handleChange = (e) =>{
@@ -68,7 +74,7 @@ import config from '../config/config';
 
         axios.post(`https://api.cloudinary.com/v1_1/serpoma/image/upload`,  formData)
         .then(res => {
-          console.log(res.data);
+        
           let temp = this.state.dataForm
           temp['images'] = res.data.url
           // ajout de l'id utilisateur
@@ -77,11 +83,12 @@ import config from '../config/config';
 
           axios.post(config.SERVER+`/annonces/addannonce`,  this.state.dataForm )
         .then(res => {
-            console.log(res.data)
+           
            toast("Annonce ajoutée")
+           this.props.history.push('/modifierannonces/')
         }).catch(erreur =>{
             alert("serveur indisponible")
-            console.log(erreur);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+            toast("Erreur interne, veuillez réessayer")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
         }) 
         }).catch(erreur =>{
           //alert("serveur indisponible")
