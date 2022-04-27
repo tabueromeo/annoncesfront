@@ -27,8 +27,9 @@ export class ModifSupp extends Component {
     }
 
     getAllUserAnnonce=()=>{
+        const userid = JSON.parse(localStorage.getItem('userid'));
 
-        axios.get(config.SERVER+'/annonces/readannonce')
+        axios.get(config.SERVER+'/annonces/showbyiduser?iduser='+userid)
         .then(res => {
           const annonces = res.data;
           this.setState({ data : annonces });
@@ -50,7 +51,7 @@ export class ModifSupp extends Component {
                
                 {
                    this.state.data.map((item, index) => {
-                       return <Card>
+                       return <Card >
                                <div   className='div_contenant_image_annonce'>
                                     <img src = {config.rezise+item.images}  className='image_annonce'/>
                                 </div>
@@ -70,10 +71,10 @@ export class ModifSupp extends Component {
                                                 {item.description.length>80?item.description.slice(0,80)+"...":item.description}
                                             </CardText>
 
-                                        
-                                        <Link to = {"/updateannonce/"+item._id}><Button className = "modif">modifier</Button></Link>
+                                            <div className='buttonModifSupprim'>
+                                        <Link to = {"/updateannonce/"+item._id}><Button className = "modif">Modifier</Button></Link>
                                         <Button className = "suppression_detail" name={item._id} onClick = {this.deleteAnnonce
-                                        }>supprimer</Button>
+                                        }>Supprimer</Button> </div>
                                    
                                     </CardBody>
                                 </div>

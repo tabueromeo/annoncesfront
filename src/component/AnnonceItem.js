@@ -25,7 +25,7 @@ function AnnonceItem(props){
                 className="mb-2 text-muted"
                 tag="h6"
             >
-                {props.date.split('T')[0]}
+             Publié le   {props.date.split('T')[0]}
             </CardSubtitle>
             <CardText>
                 {props.description.length>80?props.description.slice(0,80)+"...":props.description}

@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import React from "react"
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import axios from 'axios'
 import { SERVER } from "../../config/config";
 import sha256 from "sha256";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 function SignUp(){
     const [user, setUser] = React.useState({});
-    
+    let navigate = useNavigate();
     
     function handleChange(e){
         
@@ -37,11 +38,15 @@ function SignUp(){
         
     }
     
-    function handleSubmit(e){
+function handleSubmit(e){
        
         axios.post(SERVER+"/user/signup",user).then((response) => {
+        console.log(response)
+           
+            localStorage.setItem('userid', JSON.stringify(response.data.iduser))
             localStorage.setItem('keylogtoken', JSON.stringify(response.data.token));
-            localStorage.setItem('userid', JSON.stringify(response.data._id));
+             
+          
             
     }, (error) => {
       console.log(error);

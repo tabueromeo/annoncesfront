@@ -46,10 +46,27 @@ code {
     margin-left: 80%;
   }
 }
+
 .image_modifsupp {
   max-width: 270px;
 }
 
+.buttonModifSupprim {
+  display: flex;
+  justify-content: right;
+}
+.buttonModifSupprim button {
+  margin-left: 0.8em;
+}
+.buttonModifSupprim .suppression_detail {
+  background-color: rgb(233, 130, 130);
+  border: none;
+}
+
+.buttonModifSupprim .modif {
+  background-color: rgb(112, 226, 150);
+  border: none;
+}
 input {
   width: 100%;
 }

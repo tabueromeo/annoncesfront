@@ -82,14 +82,15 @@ import config from '../config/config';
           this.setState({ dataForm : temp })
 
           axios.post(config.SERVER+`/annonces/addannonce`,  this.state.dataForm )
-        .then(res => {
-           
-           toast("Annonce ajoutée")
-           this.props.history.push('/modifierannonces/')
-        }).catch(erreur =>{
-            alert("serveur indisponible")
-            toast("Erreur interne, veuillez réessayer")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-        }) 
+            .then(res => {
+            console.log(res)
+           // toast("Annonce ajoutée")
+            this.props.history.push('/modifierannonces/')
+            
+            }).catch(err =>{
+               // alert("serveur indisponible")
+               // toast("Erreur interne, veuillez réessayer")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+            }) 
         }).catch(erreur =>{
           //alert("serveur indisponible")
           console.log(erreur);
@@ -129,11 +130,11 @@ import config from '../config/config';
                                     onChange={this.handleChange}
                                     name ="category"
                                 >
-                                    <option value={"1"}>
-                                    1
+                                    <option value={"Catégories 1"}>
+                                    Catégories 1
                                     </option>
-                                    <option value={"2"}>
-                                    Douala
+                                    <option value={"Catégories 2"}>
+                                    Catégories 2
                                     </option>
                                     
                                 </Input>

@@ -31,12 +31,13 @@ function Login(){
     }
     
     function handleSubmit(e){
-        console.log(user)
+    
         axios.post(SERVER+"/user/login",user).then((response) => {
+            console.log(response)
+            localStorage.setItem('userid', JSON.stringify(response.data.id));
             localStorage.setItem('keylogtoken', JSON.stringify(response.data.token));
-            localStorage.setItem('userid', JSON.stringify(response.data._id));
-
-       navigate("/modifierannonces");
+            
+            navigate("/modifierannonces");
 
     }, (error) => {
       console.log(error);

@@ -1,6 +1,9 @@
 import { Form, Input} from 'reactstrap';
+import axios from 'axios'
+import config from '../config/config'
 
 function SearchBar(){
+  
 
     return (
 <Form className='formulaire_entete'>
@@ -14,9 +17,13 @@ function SearchBar(){
   <Input
     className="mb-3"
     type="select"
+
   >
     <option>
-      Catégories
+      Catégories 1
+    </option>
+    <option>
+      Catégories 2
     </option>
   </Input>
 
@@ -24,12 +31,13 @@ function SearchBar(){
   <Input
     className="mb-3"
     type="select"
+  
   >
     <option>
-      Cameroun
+      Yaoundé
     </option>
     <option>
-      Ville
+      Douala
     </option>
   </Input>
 

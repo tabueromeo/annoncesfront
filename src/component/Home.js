@@ -15,9 +15,7 @@ function Home(){
         <div>
             
                 
-<div>
-                <SearchBar/>
-            </div>
+
             <div   className='liste_annonce_principale'>
             
             <AnnoncesList />

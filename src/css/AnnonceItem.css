@@ -38,6 +38,11 @@
     flex-direction: column;
     width: 60vw;
   }
+
+  .list_item_container_principale {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .liste_annonce_principale {
@@ -46,7 +51,7 @@
   max-width: 95%;
 }
 .div_item_annonce {
-  margin: 0.2em;
+  margin: 0.4em;
 }
 
 .annonceDetailItemCarroussel {
@@ -92,6 +97,10 @@ a:-webkit-any-link {
     display: flex;
     flex-direction: column;
     width: 80vw;
+  }
+  .list_item_container_principale {
+    display: flex;
+    justify-content: center;
   }
 }
 
