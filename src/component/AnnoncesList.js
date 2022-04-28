@@ -90,9 +90,11 @@ const handleChange = (e)=>{
       
         <CardGroup className="list_item_container_principale">
         {array.length>0?(array.map((annonce,index)=>{
-           return <Link to={`/Detail/${annonce._id}`} key={index} ><AnnonceItem description={annonce.description} title={annonce.title} images={annonce.images} date = {annonce.date}/></Link>
+           return <Link to={`/Detail/${annonce._id}`} key={index} ><AnnonceItem description={annonce.description} title={annonce.title} images={annonce.images.length>5?annonce.images.split('==')[0]:config.defaultlovonsimage} date = {annonce.date}/></Link>
         })):""} 
         </CardGroup>
+        
+    
         
         </div>
     )

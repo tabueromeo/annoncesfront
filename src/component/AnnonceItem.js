@@ -28,7 +28,7 @@ function AnnonceItem(props){
              Publié le   {props.date.split('T')[0]}
             </CardSubtitle>
             <CardText>
-                {props.description.length>80?props.description.slice(0,80)+"...":props.description}
+                {props.description>80?props.description.slice(0,80)+"...":props.description}
             </CardText>
             </CardBody>
             </div>

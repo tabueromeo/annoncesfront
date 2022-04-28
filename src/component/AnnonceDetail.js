@@ -16,7 +16,28 @@ const [annonce,setArray] = useState({})
         axios.get(config.SERVER+`/annonces/one?id=`+params.id)
               .then(res => {
                   console.log(res.data)
-                const tmps = res.data
+                let tmps = res.data
+
+// début traitement de l'image
+               const tabimages= tmps.images.split('==')
+               let imagesAllTab = []
+               
+                console.log(tabimages)
+                for (let index = 0; index < tabimages.length; index++) { 
+                let tempsobject = {
+                    key:index,
+                    src:config.rezisecarrousel+tabimages[index]
+                }
+                imagesAllTab.push(tempsobject)
+               };             
+
+               tmps = {
+                   ...tmps,
+                   images:imagesAllTab
+
+               }
+               console.log(tmps)
+// fin traitement de l'image
                 setArray(
                   tmps
                 )
@@ -33,22 +54,7 @@ const [annonce,setArray] = useState({})
             <div className='entetePageDetail'>
             <div className='annonceDetailItemCarroussel'>
                 <UncontrolledCarousel
-                items={[
-                    {
-
-                    key: 1,
-                    src: config.rezisecarrousel+ annonce.images
-                    },
-                    {
-            
-                    key: 2,
-                    src: 'https://picsum.photos/id/456/1200/600'
-                    },
-                    {
-                    key: 3,
-                    src: 'https://picsum.photos/id/678/1200/600'
-                    }
-                ]}
+                items={annonce.images?annonce.images:[]}
                 />
 
             </div>    

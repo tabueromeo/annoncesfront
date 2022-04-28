@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,19 +22,13 @@ import config from '../config/config';
       
     }
 
-    componentDidMount(){
-       if(this.props.match.param){
-           console.log(this.props)
-       }else{
-           console.log("ajout")
-       }
-    }
+  
 
     handleChange = (e) =>{
 
         let name = e.target.name
 
-        if (name === 'images') {
+        if (name === 'images' && e.target.files) {
             let img = URL.createObjectURL(e.target.files[0])
             let imgUrl = e.target.files[0]
             let images = this.state.images
@@ -56,27 +51,32 @@ import config from '../config/config';
 
     
 
-     handlesubmit = (e) =>{
+handlesubmit = async (e) =>{
         
-        console.log(this.state.images)
-        const formData = new FormData()
-        if(this.state.url.length>0){
-            formData.append('file', this.state.url[0])
-        }
+     
+    let urlimage='';
+    for (let index = 0; index < this.state.url.length; index++) {
+
+        const url1 = this.state.url[index];
+        let formData = new FormData()
         
+        formData.append('file', url1)
+                
         formData.append('upload_preset', 'ksgff1pb')
 
-        const option = {
-            method : 'POST',
-            body : formData,
-        }
-
-
-        axios.post(`https://api.cloudinary.com/v1_1/serpoma/image/upload`,  formData)
-        .then(res => {
         
+        const resp =  await  axios.post(`https://api.cloudinary.com/v1_1/serpoma/image/upload`,  formData)
+
+        if(index==0){
+            urlimage = resp.data.url;
+        }else{
+            urlimage = urlimage+'=='+resp.data.url;
+        }
+        
+    }
+
           let temp = this.state.dataForm
-          temp['images'] = res.data.url
+          temp['images'] = urlimage
           // ajout de l'id utilisateur
           temp['iduser']=JSON.parse(localStorage.getItem('userid'))
           this.setState({ dataForm : temp })
@@ -84,28 +84,41 @@ import config from '../config/config';
           axios.post(config.SERVER+`/annonces/addannonce`,  this.state.dataForm )
             .then(res => {
             console.log(res)
-           // toast("Annonce ajoutée")
+            toast("Annonce ajoutée")
             this.props.history.push('/modifierannonces/')
             
             }).catch(err =>{
                // alert("serveur indisponible")
-               // toast("Erreur interne, veuillez réessayer")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-            }) 
-        }).catch(erreur =>{
-          //alert("serveur indisponible")
-          console.log(erreur);
-      })
-      
-        
+                toast("Erreur interne, veuillez réessayer")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+            })      
         
 
       e.preventDefault() 
     }
-    
-    componentDidMount() {
-        console.log(this.props)
-      //  const id = this.props.match.params.id
-        
+
+
+    handleDeleteimage = (e)=>{
+      
+        let nameimg = e.target.name
+
+        let imagestmp = this.state.images;
+        let urltemps = this.state.url;
+
+      let imagesout =  imagestmp.filter(function(val,index,arr){
+            return index!=nameimg
+        })
+
+        let urlout =  urltemps.filter(function(val,index,arr){
+            return index!=nameimg
+        })
+
+
+       this.setState({
+        images:imagesout,
+        url:urlout
+       })
+
+
     }
     
 
@@ -154,12 +167,14 @@ import config from '../config/config';
                   {this.state.images.length > 0 || this.state.images.length < 4
                      ? this.state.images.map((image, index) => (
                           <div key={index} className="col mt-4">
+                              <Button close name = { index}onClick={this.handleDeleteimage} />
                              <img
                                 src={image}
                                 alt=""
                                 className="img-responsive img-thumbnail"
                                 id="img-tache"
                              />
+                             
                           </div>
                        ))
                      : null}

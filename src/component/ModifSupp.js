@@ -53,7 +53,7 @@ export class ModifSupp extends Component {
                    this.state.data.map((item, index) => {
                        return <Card >
                                <div   className='div_contenant_image_annonce'>
-                                    <img src = {config.rezise+item.images}  className='image_annonce'/>
+                                    <img src = {config.rezise+(item.images.length>5?item.images.split('==')[0]:config.defaultlovonsimage)}  className='image_annonce'/>
                                 </div>
                                 <div className='div_contenant_texte_annonce'>
                                 <CardBody>
@@ -68,7 +68,7 @@ export class ModifSupp extends Component {
                                                 {item.date.split('T')[0]}
                                             </CardSubtitle>
                                             <CardText>
-                                                {item.description.length>80?item.description.slice(0,80)+"...":item.description}
+                                                {item.description?item.description.slice(0,80)+"...":item.description}
                                             </CardText>
 
                                             <div className='buttonModifSupprim'>
