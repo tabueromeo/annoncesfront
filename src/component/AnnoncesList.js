@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AnnonceItem from './AnnonceItem';
 import config from "../config/config";
 import { Form, Input} from 'reactstrap';
+import { Loader, Image, Segment,Pagination } from 'semantic-ui-react'
 import axios from "axios";
 
 
@@ -12,14 +13,18 @@ function AnnoncesList(){
 
 
 const [array,setArray] = useState([])
-const [criteria,setCriteria] = useState([])
+const [totalpage,setTotalpage] = useState(0)
+const [activePage,setActivePage] = useState(1)
+const perPage = 10;
 
 
 useEffect(() => {
   axios.get(config.SERVER+`/annonces/readannonce`)
         .then(res => {
           const tmps = res.data
-          console.log(tmps)
+         
+          const tpage = tmps.length/perPage
+          setTotalpage(Math.ceil(tpage))
           setArray(
             tmps
           )
@@ -45,6 +50,11 @@ const handleChange = (e)=>{
   
   
  
+}
+
+const paginationChange = (elt,data)=>{
+
+setActivePage(data.activePage)
 }
 
     return(
@@ -89,12 +99,21 @@ const handleChange = (e)=>{
 </Form>
       
         <CardGroup className="list_item_container_principale">
-        {array.length>0?(array.map((annonce,index)=>{
+        {array.length>0?((array.slice((activePage-1)*perPage,activePage*perPage)).map((annonce,index)=>{
            return <Link to={`/Detail/${annonce._id}`} key={index} ><AnnonceItem description={annonce.description} title={annonce.title} images={annonce.images.length>5?annonce.images.split('==')[0]:config.defaultlovonsimage} date = {annonce.date}/></Link>
-        })):""} 
+        })):( <Segment>
+          <Loader disabled />
+      
+          <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+
+          <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+
+          <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+        </Segment>)} 
+       
         </CardGroup>
         
-    
+        <div  className="containerPrincipalListStyle"><Pagination defaultActivePage={1} totalPages={totalpage} onPageChange={paginationChange} /></div>
         
         </div>
     )
