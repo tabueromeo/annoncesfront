@@ -84,12 +84,22 @@ const [dataForm,setdataForm] = useState({})
                                     type="select"
                                     onChange={handleChange}
                                     name ="category"
+                                    value={dataForm.category}
                                 >
-                                    <option value={"1"}>
-                                    1
+                                    <option value={config.title.tesc}>
+                                    {config.title.tesc}
                                     </option>
-                                    <option value={"2"}>
-                                    Douala
+                                    <option value={config.title.thot}>
+                                    {config.title.thot}
+                                    </option>
+                                    <option value={config.title.tsoir}>
+                                    {config.title.tsoir}
+                                    </option>
+                                    <option value={config.title.tmas}>
+                                    {config.title.tmas}
+                                    </option>
+                                    <option value={config.title.tproduit}>
+                                    {config.title.tproduit}
                                     </option>
                                     
                                 </Input>

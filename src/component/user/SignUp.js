@@ -46,7 +46,7 @@ function handleSubmit(e){
             localStorage.setItem('userid', JSON.stringify(response.data.iduser))
             localStorage.setItem('keylogtoken', JSON.stringify(response.data.token));
              
-            navigate("/modifierannonces");
+            navigate("/createmodifannonce");
             
     }, (error) => {
       console.log(error);
