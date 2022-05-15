@@ -73,12 +73,22 @@ setActivePage(data.activePage)
   onChange={handleChange}
   name="category"
   >
-    <option>
-      Catégories 1
-    </option>
-    <option>
-      Catégories 2
-    </option>
+   
+                                    <option value={config.title.tesc}>
+                                    {config.title.tesc}
+                                    </option>
+                                    <option value={config.title.thot}>
+                                    {config.title.thot}
+                                    </option>
+                                    <option value={config.title.tsoir}>
+                                    {config.title.tsoir}
+                                    </option>
+                                    <option value={config.title.tmas}>
+                                    {config.title.tmas}
+                                    </option>
+                                    <option value={config.title.tproduit}>
+                                    {config.title.tproduit}
+                                    </option>
   </Input>
 
 
@@ -100,7 +110,7 @@ setActivePage(data.activePage)
       
         <CardGroup className="list_item_container_principale">
         {array.length>0?((array.slice((activePage-1)*perPage,activePage*perPage)).map((annonce,index)=>{
-           return <Link to={`/Detail/${annonce._id}`} key={index} ><AnnonceItem description={annonce.description} title={annonce.title} images={annonce.images.length>5?annonce.images.split('==')[0]:config.defaultlovonsimage} date = {annonce.date}/></Link>
+           return <Link to={`/Detail/${annonce._id}`} key={index} ><AnnonceItem description={annonce.description} title={annonce.title}  ville = {annonce.ville}images={annonce.images.length>5?annonce.images.split('==')[0]:config.defaultlovonsimage} date = {annonce.date}/></Link>
         })):( <Segment>
           <Loader disabled />
       

@@ -51,7 +51,7 @@ export class ModifSupp extends Component {
                
                 {
                    this.state.data.map((item, index) => {
-                       return <Card >
+                       return <Card className='list_item_container_modif_supp'>
                                <div   className='div_contenant_image_annonce'>
                                     <img src = {config.rezise+(item.images.length>5?item.images.split('==')[0]:config.defaultlovonsimage)}  className='image_annonce'/>
                                 </div>

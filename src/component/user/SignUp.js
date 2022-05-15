@@ -41,12 +41,12 @@ function SignUp(){
 function handleSubmit(e){
        
         axios.post(SERVER+"/user/signup",user).then((response) => {
-        console.log(response)
+       // console.log(response)
            
             localStorage.setItem('userid', JSON.stringify(response.data.iduser))
             localStorage.setItem('keylogtoken', JSON.stringify(response.data.token));
              
-          
+            navigate("/modifierannonces");
             
     }, (error) => {
       console.log(error);

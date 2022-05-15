@@ -133,7 +133,7 @@ handlesubmit = async (e) =>{
                         <div className="form-area">
                             <Form role="form">
                                 <br/>
-                                    <h3>Ajouter une annonce</h3>
+                                    <h3 style={{color:"#ee3f89"}}>Ajouter une annonce</h3>
                                     
                                     <FormGroup> 
                                     <Label>Catégorie</Label>
@@ -143,11 +143,21 @@ handlesubmit = async (e) =>{
                                     onChange={this.handleChange}
                                     name ="category"
                                 >
-                                    <option value={"Catégories 1"}>
-                                    Catégories 1
+                                    
+                                    <option value={config.title.tesc}>
+                                    {config.title.tesc}
                                     </option>
-                                    <option value={"Catégories 2"}>
-                                    Catégories 2
+                                    <option value={config.title.thot}>
+                                    {config.title.thot}
+                                    </option>
+                                    <option value={config.title.tsoir}>
+                                    {config.title.tsoir}
+                                    </option>
+                                    <option value={config.title.tmas}>
+                                    {config.title.tmas}
+                                    </option>
+                                    <option value={config.title.tproduit}>
+                                    {config.title.tproduit}
                                     </option>
                                     
                                 </Input>

@@ -3,7 +3,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import config from '../config/config';
 
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownItem, NavbarText, DropdownMenu, DropdownToggle, Button} from 'reactstrap';
+import {CardImg, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownItem, NavbarText, DropdownMenu, DropdownToggle, Button} from 'reactstrap';
 
 function Menu(){
     const [isOpen, setIsOpen]= React.useState(false)
@@ -57,7 +57,11 @@ function Menu(){
             light
         >
             <NavbarBrand href="/">
-            reactstrap
+            <CardImg
+      alt="Accueil"
+      src="/lovons.png"
+     style={{width:"170px"}}
+    />
             </NavbarBrand>
             <NavbarToggler onClick={function noRefCheck(){ setIsOpen(!isOpen)}} />
             <Collapse navbar isOpen={isOpen}>
@@ -66,13 +70,13 @@ function Menu(){
                 navbar
             >
                 <NavItem>
-                <NavLink href="/components/">
-                    Components
+                <NavLink href="/">
+                    {/*config.title.thot*/}
                 </NavLink>
                 </NavItem>
                 <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                    GitHub
+                <NavLink href="/">
+                    {/*config.title.tesc*/}
                 </NavLink>
                 </NavItem>
                 <UncontrolledDropdown
@@ -80,21 +84,21 @@ function Menu(){
                 nav
                 >
                 <DropdownToggle
-                    caret
+                    
                     nav
                 >
-                    Options
+                   
                 </DropdownToggle>
                 <DropdownMenu end>
                     <DropdownItem>
-                    Option 1
+                    {/*config.title.tmas*/}
                     </DropdownItem>
                     <DropdownItem>
-                    Option 2
+                    {/*config.title.tsoir*/}
                     </DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem>
-                    Reset
+                    {/*config.title.tproduit*/}
                     </DropdownItem>
                 </DropdownMenu>
                 </UncontrolledDropdown>

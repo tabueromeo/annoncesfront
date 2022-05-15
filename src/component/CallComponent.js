@@ -1,5 +1,6 @@
 import { Card, CardTitle, CardText, Button, Col } from 'reactstrap';
 import React from 'react';
+import { IoMdCall } from "react-icons/io";
 
 import Modal from 'react-modal';
 
@@ -28,7 +29,7 @@ function CallComponent(props){
     return(
         <Col sm="6">
         <Card body>
-      <CardTitle tag="h5">
+      <CardTitle tag="h5" style={{color:"#ee3f89"}}>
         {title}
       </CardTitle>
       <CardTitle tag="h6">
@@ -38,8 +39,8 @@ function CallComponent(props){
       <CardText>
       {description}
       </CardText>
-      <Button onClick={openModal}>
-      Afficher le numéro
+      <Button onClick={openModal} style={{backgroundColor:"#ee3f89",border:'none'}}>
+      <IoMdCall /> Afficher le numéro
       </Button>
     </Card>
 

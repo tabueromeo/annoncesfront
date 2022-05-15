@@ -18,8 +18,8 @@ function AnnonceItem(props){
 
             <div className='div_contenant_texte_annonce'>
             <CardBody>
-            <CardTitle tag="h5">
-                {props.title}
+            <CardTitle tag="h5" style={{color:"#ee3f89"}}>
+                {props.title+", "+(props.ville?props.ville:"")}
             </CardTitle>
             <CardSubtitle
                 className="mb-2 text-muted"
