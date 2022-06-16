@@ -1,5 +1,5 @@
 module.exports = {
-    SERVER:"http://54.160.215.236:4000",
+    SERVER:"https://back.lovons.com:4000",
     //SERVER:"http://localhost:4000",
    rezise :"https://res.cloudinary.com/dzjjthglw/image/fetch/h_400/",
    rezisecarrousel :"https://res.cloudinary.com/dzjjthglw/image/fetch/h_520/",
