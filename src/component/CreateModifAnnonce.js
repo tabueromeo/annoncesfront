@@ -80,6 +80,7 @@ handlesubmit = async (e) =>{
           // ajout de l'id utilisateur
           temp['iduser']=JSON.parse(localStorage.getItem('userid'))
           this.setState({ dataForm : temp })
+          console.log(this.state.dataForm)
 
           axios.post(config.SERVER+`/annonces/addannonce`,  this.state.dataForm )
             .then(res => {
@@ -143,7 +144,9 @@ handlesubmit = async (e) =>{
                                     onChange={this.handleChange}
                                     name ="category"
                                 >
-                                    
+                                    <option >
+                                    {"Selectionnez une catégorie"}
+                                    </option>
                                     <option value={config.title.tesc}>
                                     {config.title.tesc}
                                     </option>
@@ -163,6 +166,58 @@ handlesubmit = async (e) =>{
                                 </Input>
 
                                 </FormGroup>
+
+                                <FormGroup> 
+                                    <Label>Ville</Label>
+                                <Input
+                                    className="mb-3"
+                                    type="select"
+                                    onChange={this.handleChange}
+                                    name ="ville"
+                                >
+                                    <option >
+                                    {"Selectionnez votre ville"}
+                                    </option>
+                                    <option value={config.ville.douala}>
+                                    {config.ville.douala}
+                                    </option>
+                                    <option value={config.ville.yaounde}>
+                                    {config.ville.yaounde}
+                                    </option>
+                                 
+                                    
+                                </Input>
+
+                                </FormGroup>
+
+
+                                <FormGroup> 
+                                <Label>Cherche</Label>
+<Input
+    className="mb-3"
+    type="select"
+    onChange={this.handleChange}
+    name ="cherche"
+>
+<option >
+                                    {"Selectionnez"}
+                                    </option>
+    <option value={config.cherche.femme}>
+    {config.cherche.femme}
+    </option>
+    <option value={config.cherche.homme}>
+    {config.cherche.homme}
+    </option>
+    
+    <option value={config.cherche.couple}>
+    {config.cherche.couple}
+    </option>
+
+</Input>
+
+</FormGroup>
+
+
                                     <div className="form-group">
                                     <Label>Titre</Label>
                                     <Input type="text" className="form-control" name = "title" onChange ={this.handleChange} />

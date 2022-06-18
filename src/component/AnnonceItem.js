@@ -1,6 +1,7 @@
 import { CardGroup, Card, CardImg, CardBody, CardTitle, CardSubtitle,  CardText, Button} from 'reactstrap'
 import '../css/AnnonceItem.css'
 import config from '../config/config'
+import { BiTimeFive} from "react-icons/bi";
 function AnnonceItem(props){
 
   //  console.log(props)
@@ -25,7 +26,7 @@ function AnnonceItem(props){
                 className="mb-2 text-muted"
                 tag="h6"
             >
-             Publié le   {props.date.split('T')[0]}
+               <BiTimeFive/>  Publié le   {props.date.split('T')[0]}
             </CardSubtitle>
             <CardText>
                 {props.description>80?props.description.slice(0,80)+"...":props.description}

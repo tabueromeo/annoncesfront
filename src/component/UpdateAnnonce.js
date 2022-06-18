@@ -105,6 +105,30 @@ const [dataForm,setdataForm] = useState({})
                                 </Input>
 
                                 </FormGroup>
+
+
+                                <FormGroup> 
+                                    <Label>Ville</Label>
+                                <Input
+                                    className="mb-3"
+                                    type="select"
+                                    onChange={handleChange}
+                                    name ="ville"
+                                    value={dataForm.ville}
+                                >
+                                    
+                                    <option value={config.ville.douala}>
+                                    {config.ville.douala}
+                                    </option>
+                                    <option value={config.ville.yaounde}>
+                                    {config.ville.yaounde}
+                                    </option>
+                                 
+                                    
+                                </Input>
+
+                                </FormGroup>
+
                                     <div className="form-group">
                                     <Label>Titre</Label>
                                     <Input type="text" className="form-control" value = {dataForm.title} name = "title" onChange ={handleChange} />

@@ -11,12 +11,16 @@ function AnnonceDetail(){
 
 const [annonce,setArray] = useState({})
 
+const [annonceSend,setannonceSend] = useState({})
     
     useEffect(() => {
         axios.get(config.SERVER+`/annonces/one?id=`+params.id)
               .then(res => {
                   console.log(res.data)
                 let tmps = res.data
+                setannonceSend(tmps)
+                    
+                
 
 // début traitement de l'image
                const tabimages= tmps.images.split('==')
@@ -41,6 +45,8 @@ const [annonce,setArray] = useState({})
                 setArray(
                   tmps
                 )
+
+                
               }).catch(erreur =>{
                 //alert("serveur indisponible")
                 console.log(erreur);
@@ -59,7 +65,7 @@ const [annonce,setArray] = useState({})
 
             </div>    
             <div className='callBoxDetailRight'>
-                <CallComponent annonce ={annonce}/>
+                <CallComponent annonce ={annonce} annonceSend = {annonceSend}/>
             </div>
            
 

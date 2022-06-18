@@ -2,7 +2,7 @@ import { Link,useNavigate } from "react-router-dom";
 import React from "react"
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import axios from 'axios'
-import { SERVER } from "../../config/config";
+import config, { SERVER } from "../../config/config";
 import sha256 from "sha256";
 import { wait } from "@testing-library/user-event/dist/utils";
 
@@ -79,6 +79,8 @@ function handleSubmit(e){
 
             </FormGroup>
 
+           
+
             <FormGroup>
                 <Input
                 id="exampleNumber"
@@ -89,6 +91,26 @@ function handleSubmit(e){
                 />
             </FormGroup>
 
+ 
+            <FormGroup> 
+
+                <Input
+                    className="mb-3"
+                    type="select"
+                    onChange={handleChange}
+                    name ="genre"
+                >
+                    <option value={config.cherche.femme}>
+                    {config.cherche.femme}
+                    </option>
+                    <option value={config.cherche.homme}>
+                    {config.cherche.homme}
+                    </option>
+                    
+                </Input>
+
+            </FormGroup>
+            
 
                 <FormGroup>
                     <Label
