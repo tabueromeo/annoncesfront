@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -19,6 +20,8 @@ import config from '../config/config';
             images:[],
             url:[],
         }
+
+          
       
     }
 
@@ -125,6 +128,7 @@ handlesubmit = async (e) =>{
 
    render() {
        const {dataForm} = this.state;
+       console.log(this.props.usertype)
        
         return (
             <div>

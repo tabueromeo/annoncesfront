@@ -5,14 +5,19 @@ import { Loader, Image, Segment } from 'semantic-ui-react'
 import config from "../config/config";
 import { ToastContainer, toast } from 'react-toastify';
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import { useSelector } from 'react-redux';
+
 
 function UpdateAnnonce(){
     let params = useParams()
     let navigate = useNavigate();
+    const privilege = useSelector((state)=>state.userReducer.usertype)
 
 const [annonce,setArray] = useState({})
 
 const [dataForm,setdataForm] = useState({})
+
+console.log(privilege)
 
     
     useEffect(() => {

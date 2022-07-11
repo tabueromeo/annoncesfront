@@ -8,6 +8,8 @@ import { wait } from "@testing-library/user-event/dist/utils";
 
 function SignUp(){
     const [user, setUser] = React.useState({});
+    const [isPassEgal, setisPassEgal] = React.useState(true);
+
     let navigate = useNavigate();
     
     function handleChange(e){
@@ -16,16 +18,25 @@ function SignUp(){
         if(e.target.name==="password"){
             
             let usertmps = user
-         usertmps[e.target.name]=sha256(e.target.value);
-        setUser(usertmps)
+            usertmps[e.target.name]=sha256(e.target.value);
+            setUser(usertmps)
+
+                if(usertmps["password"]===usertmps["passwordcm"]){
+                    setisPassEgal(true)
+                }else{
+                    setisPassEgal(false)
+                    
+                }
         
         }else if(e.target.name==="passwordcm"){
-            let usertmps = user
-                if(usertmps["password"]===sha256(e.target.value)){
-
-            }else{
-                
-            }
+                let usertmps = user
+                usertmps[e.target.name]=sha256(e.target.value);
+                    if(usertmps["password"]===sha256(e.target.value)){
+                    setisPassEgal(true)
+                }else{
+                    setisPassEgal(false)
+                    
+                }
 
         }else{
             let usertmps = user
@@ -39,18 +50,27 @@ function SignUp(){
     }
     
 function handleSubmit(e){
-       
+
+    if(user["password"]===user["passwordcm"]){
+
         axios.post(SERVER+"/user/signup",user).then((response) => {
-       // console.log(response)
-           
-            localStorage.setItem('userid', JSON.stringify(response.data.iduser))
-            localStorage.setItem('keylogtoken', JSON.stringify(response.data.token));
-             
-            navigate("/createmodifannonce");
-            
-    }, (error) => {
-      console.log(error);
-    });
+            // console.log(response)
+                
+                 localStorage.setItem('userid', JSON.stringify(response.data.iduser))
+                 localStorage.setItem('keylogtoken', JSON.stringify(response.data.token));
+                  
+                 navigate("/createmodifannonce");
+                 
+         }, (error) => {
+           console.log(error);
+         });
+
+    }else{
+
+        setisPassEgal(false)
+    }
+       
+       
     
         e.preventDefault()
     }
@@ -157,8 +177,10 @@ function handleSubmit(e){
                     placeholder="Conifrm password"
                     type="password"
                     onChange={handleChange}
+                    style={{borderBlockColor : isPassEgal?"#ced4da":"red"}}
                     />
                 </FormGroup>
+                <p  style={{color : "red"}} > {isPassEgal?"":"Les mots de passe ne corespondent pas"}</p>
 
                 {' '}
                 <Button onClick = {handleSubmit}>

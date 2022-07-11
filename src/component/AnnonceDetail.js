@@ -16,7 +16,7 @@ const [annonceSend,setannonceSend] = useState({})
     useEffect(() => {
         axios.get(config.SERVER+`/annonces/one?id=`+params.id)
               .then(res => {
-                  console.log(res.data)
+                
                 let tmps = res.data
                 setannonceSend(tmps)
                     

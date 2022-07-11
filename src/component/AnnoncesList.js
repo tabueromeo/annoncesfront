@@ -15,6 +15,7 @@ function AnnoncesList(){
 const [array,setArray] = useState([])
 const [totalpage,setTotalpage] = useState(0)
 const [activePage,setActivePage] = useState(1)
+const [isSearch,setisSearch] = useState(false)
 const perPage = 10;
 
 
@@ -22,7 +23,8 @@ useEffect(() => {
   axios.get(config.SERVER+`/annonces/readannonce`)
         .then(res => {
           const tmps = res.data
-         
+          //on remet le boolean pour dire que ça ne vient pas d'une recherche
+          setisSearch(false)
           const tpage = tmps.length/perPage
           setTotalpage(Math.ceil(tpage))
           setArray(
@@ -36,6 +38,9 @@ useEffect(() => {
 
 const handleChange = (e)=>{
   if(e.target.name&&e.target.value){
+    //on met le booléen pour dire que ça vient d'une recherche
+    setisSearch(true)
+
     axios.get(config.SERVER+`/annonces/showbycriteria?${e.target.name}=${e.target.value}`)
     .then(res => {
       const tmps = res.data
@@ -51,6 +56,22 @@ const handleChange = (e)=>{
   
  
 }
+
+
+const ErrorPage = ()=>{
+  return (
+    <div id="wrapper">
+        <div id="info" >
+          <img style={{width:'100%'}} src="/erreur.png"/>
+          <div style={{ padding:"auto"}} >
+            <h2>Pas de resultat, </h2>
+            <h3>Changez de critère de recherche</h3>
+            </div>
+        </div>
+    </div >
+)
+}
+
 
 const paginationChange = (elt,data)=>{
 
@@ -111,7 +132,7 @@ setActivePage(data.activePage)
         <CardGroup className="list_item_container_principale">
         {array.length>0?((array.slice((activePage-1)*perPage,activePage*perPage)).map((annonce,index)=>{
            return <Link to={`/Detail/${annonce._id}`} key={index} ><AnnonceItem description={annonce.description} title={annonce.title}  ville = {annonce.ville}images={annonce.images.length>5?annonce.images.split('==')[0]:config.defaultlovonsimage} date = {annonce.date}/></Link>
-        })):( <Segment>
+        })):(!isSearch?( <Segment>
           <Loader disabled />
       
           <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
@@ -119,7 +140,7 @@ setActivePage(data.activePage)
           <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 
           <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
-        </Segment>)} 
+        </Segment>):<ErrorPage/>)} 
        
         </CardGroup>
         

@@ -81,8 +81,13 @@ function CallComponent(props){
         onRequestClose={closeModal}
         style={customStyles}
       >
+    
+   <div> <img src="/whatsapp_logo_svg.png" onClick={()=>window.open(config.whatsappapi+telephone)} style = {{ width:"30px"}}/>   {telephone}</div>  
+    
+     
+  
 
-      <h2>{telephone}</h2> 
+    
       
       </Modal>
 
@@ -100,5 +105,14 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
   },
 };
+
+const whatsappStyles = {
+  content: {
+  display:"flex",
+  flexDirection:"row",
+
+  },
+};
+
 
 export default CallComponent
