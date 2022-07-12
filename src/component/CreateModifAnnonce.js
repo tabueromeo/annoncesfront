@@ -5,10 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
-import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button,Spinner} from 'reactstrap';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from 'react-modal';
 
 import config from '../config/config';
+import CustomSpinner from './addons/SpinnerModal'
 
  class CreateModifAnnonce extends Component {
 
@@ -19,6 +21,7 @@ import config from '../config/config';
             clogImageUpload : "",
             images:[],
             url:[],
+            modalIsOpen:false,
         }
 
           
@@ -56,7 +59,8 @@ import config from '../config/config';
 
 handlesubmit = async (e) =>{
         
-     
+    this.openModal()
+    
     let urlimage='';
     for (let index = 0; index < this.state.url.length; index++) {
 
@@ -85,12 +89,14 @@ handlesubmit = async (e) =>{
           this.setState({ dataForm : temp })
           console.log(this.state.dataForm)
 
+         
           axios.post(config.SERVER+`/annonces/addannonce`,  this.state.dataForm )
             .then(res => {
+            this.closeModal()
             console.log(res)
             toast("Annonce ajoutée")
             this.props.history.push('/modifierannonces/')
-            
+          
             }).catch(err =>{
                // alert("serveur indisponible")
                 toast("Erreur interne, veuillez réessayer")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
@@ -124,12 +130,30 @@ handlesubmit = async (e) =>{
 
 
     }
+     openModal() {
+        this.setState({
+            modalIsOpen:true
+        })
+      }
     
+     closeModal() {
+        this.setState({
+            modalIsOpen:false
+        })
+      }
+      afterOpenModal() {
+      }
+     
+    
+     
+
+
 
    render() {
-       const {dataForm} = this.state;
+       const {dataForm,modalIsOpen} = this.state;
        console.log(this.props.usertype)
-       
+       Modal.setAppElement('#root');
+
         return (
             <div>
                 <div className="container-addannonce">
@@ -278,10 +302,40 @@ handlesubmit = async (e) =>{
                             </Form>
                         </div>
                     </div>
+
+                  
+
                 </div>
+
+                <Modal
+                        isOpen={modalIsOpen}
+                        onAfterOpen={this.afterOpenModal}
+                        onRequestClose={this.closeModal}
+                         style={customStyles}
+                               
+                    >
+                    
+                           <CustomSpinner/>
+
+                    
+                    
+                    </Modal>
             </div>
         )
     }
 }
 
 export default CreateModifAnnonce;
+
+const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      background: 'nonce',
+      border:'none',
+    },
+  };
