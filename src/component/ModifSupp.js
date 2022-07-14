@@ -42,6 +42,18 @@ export class ModifSupp extends Component {
     componentDidMount() {
         this.getAllUserAnnonce()
     }
+
+
+
+    afficheButtonAddAnnonce(){
+        return  (<div className='buttonAddAnnonce' style={{maxWidth: "400px",marginLeft:"auto",marginRight:"auto"}}> <h3 style={{color:"#ee3f89"}}> Vous n'avez pas encore d'annonce</h3> <Button
+        color="primary"
+        onClick={this.handleAddAnnonce}
+        
+    >
+     <Link to="/createmodifannonce">  Publiez une annonce</Link>
+    </Button></div>)
+    }
     
 
     render() {
@@ -50,7 +62,7 @@ export class ModifSupp extends Component {
             <div className='div_item_annonce'>
                
                 {
-                   this.state.data.map((item, index) => {
+                 this.state.data.length>0? this.state.data.map((item, index) => {
                        return <Card className='list_item_container_modif_supp'>
                                <div   className='div_contenant_image_annonce'>
                                     <img src = {config.rezise+(item.images.length>5?item.images.split('==')[0]:config.defaultlovonsimage)}  className='image_annonce'/>
@@ -81,7 +93,7 @@ export class ModifSupp extends Component {
                            
                             
                             </Card>
-                   })
+                   }): this.afficheButtonAddAnnonce()
                 }
                 
                
@@ -90,4 +102,7 @@ export class ModifSupp extends Component {
     }
 }
 
+
+
 export default ModifSupp
+

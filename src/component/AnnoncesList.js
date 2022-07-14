@@ -16,7 +16,7 @@ const [array,setArray] = useState([])
 const [totalpage,setTotalpage] = useState(0)
 const [activePage,setActivePage] = useState(1)
 const [isSearch,setisSearch] = useState(false)
-const perPage = 10;
+const perPage = 5;
 
 
 useEffect(() => {
