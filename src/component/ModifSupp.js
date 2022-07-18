@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import config from '../config/config'
 import {Card,CardBody,Button,CardTitle, CardSubtitle,  CardText} from 'reactstrap'
+import moment from "moment";
+import frLocale from "moment/locale/fr";
 
 export class ModifSupp extends Component {
 
@@ -57,7 +59,7 @@ export class ModifSupp extends Component {
     
 
     render() {
-       // console.log(this.state.data)
+        moment.locale('fr', [frLocale])
         return (
             <div className='div_item_annonce'>
                
@@ -77,7 +79,7 @@ export class ModifSupp extends Component {
                                                 className="mb-2 text-muted"
                                                 tag="h6"
                                             >
-                                                {item.date.split('T')[0]}
+                                                {moment(item.date).fromNow()}
                                             </CardSubtitle>
                                             <CardText>
                                                 {item.description?item.description.slice(0,80)+"...":item.description}

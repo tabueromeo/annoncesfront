@@ -6,6 +6,8 @@ import { IoMdCall } from "react-icons/io";
 import { FaRegEye } from "react-icons/fa";
 import { GiPositionMarker } from "react-icons/gi";
 import { BiTimeFive} from "react-icons/bi";
+import moment from "moment";
+import frLocale from "moment/locale/fr";
 
 
 import Modal from 'react-modal';
@@ -13,6 +15,7 @@ import Modal from 'react-modal';
 function CallComponent(props){
   const {title, date,description,telephone, nbervue, nbervuetel,ville} = props.annonce;
   
+  moment.locale('fr', [frLocale])
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
@@ -56,7 +59,7 @@ function CallComponent(props){
                 className="mb-2 text-muted"
                 tag="h6"
             >
-     <BiTimeFive/> {"Publié le "+date}
+     <BiTimeFive/> {"Publiée "+moment(props.annonceSend.date).fromNow()}
       </CardSubtitle>
 
       <CardTitle tag="h6">

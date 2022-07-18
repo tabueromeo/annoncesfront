@@ -1,10 +1,13 @@
 import { CardGroup, Card, CardImg, CardBody, CardTitle, CardSubtitle,  CardText, Button} from 'reactstrap'
 import '../css/AnnonceItem.css'
 import config from '../config/config'
+import moment from "moment";
+import frLocale from "moment/locale/fr";
 import { BiTimeFive} from "react-icons/bi";
+
 function AnnonceItem(props){
 
-  //  console.log(props)
+    moment.locale('fr', [frLocale])
     return(
         <div className='div_item_annonce'>
             <Card>
@@ -26,7 +29,7 @@ function AnnonceItem(props){
                 className="mb-2 text-muted"
                 tag="h6"
             >
-               <BiTimeFive/>  Publié le   {props.date.split('T')[0]}
+               <BiTimeFive/>  Publiée {moment(props.date).fromNow()}
             </CardSubtitle>
             <CardText>
                 {props.description>80?props.description.slice(0,80)+"...":props.description}

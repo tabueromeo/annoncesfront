@@ -6,6 +6,7 @@ import CallComponent from './CallComponent';
 import axios from 'axios';
 import config from "../config/config";
 
+
 function AnnonceDetail(){
     let params = useParams()
 
