@@ -58,7 +58,12 @@ function Login(){
            
 
             dispatch(setUserType(response.data.typeuser))
-            navigate("/modifierannonces");
+            if(response.data.typeuser =="admin"){
+              navigate("/adminmodifierannonces");
+            }else{
+              navigate("/modifierannonces");
+            }
+            
 
     }, (error) => {
 

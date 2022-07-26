@@ -17,6 +17,7 @@ import Login from './component/user/Login';
 import SignUp from './component/user/SignUp';
 import UpdateAnnonce from './component/UpdateAnnonce';
 import Home from './component/Home';
+import AdminModifSupp from './component/AdminModifSupp';
 
 function App() {
   return (
@@ -34,7 +35,9 @@ function App() {
                     <Route path="/Detail/:id" element={<AnnonceDetail />} />
                     <Route path = "/createmodifannonce/" element={<CreateModifAnnonce />}/>
                     <Route path = "/updateannonce/:id" element={<UpdateAnnonce />}/>
-                    <Route path = "/modifierannonces/" element={<ModifSupp />} />
+                    <Route path = "/modifierannonces/"  element={<ModifSupp/>} /> 
+                    <Route path = "/adminmodifierannonces/" element={<AdminModifSupp />} />
+                   
 
                     <Route path = "/login" element={<Login />} />
                     <Route path = "/signup" element={<SignUp />} />
