@@ -54,10 +54,7 @@ import frLocale from "moment/locale/fr";
     
        
        
-    const handleAddAnnonce = ()=>{
-        navigate('/createmodifannonce')
-    }
-    
+   
     const  afficheButtonAddAnnonce =()=>{
         return  (<div className='buttonAddAnnonce' style={{maxWidth: "400px",marginLeft:"auto",marginRight:"auto"}}> <h3 style={{color:"#ee3f89"}}> Aucune annonce disponible sur votre site</h3> 
      </div>)
