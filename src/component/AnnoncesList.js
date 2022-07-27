@@ -32,7 +32,7 @@ useEffect(() => {
             tmps
           )
         }).catch(erreur =>{
-          //alert("serveur indisponible")
+          
           console.log(erreur);
       })
 },[]);
