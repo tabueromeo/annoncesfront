@@ -17,7 +17,7 @@ const [annonce,setArray] = useState({})
 
 const [dataForm,setdataForm] = useState({})
 
-console.log(privilege)
+console.log(params.id)
 
     
     useEffect(() => {

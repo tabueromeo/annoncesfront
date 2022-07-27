@@ -22,7 +22,8 @@ const perPage = 5;
 useEffect(() => {
   axios.get(config.SERVER+`/annonces/readannonce`)
         .then(res => {
-          const tmps = res.data
+          const tmps = res.data.filter(word => word.statut ==config.statut.ligne);
+          
           //on remet le boolean pour dire que ça ne vient pas d'une recherche
           setisSearch(false)
           const tpage = tmps.length/perPage
@@ -43,7 +44,7 @@ const handleChange = (e)=>{
 
     axios.get(config.SERVER+`/annonces/showbycriteria?${e.target.name}=${e.target.value}`)
     .then(res => {
-      const tmps = res.data
+      const tmps = res.data.filter(word => word.statut ==config.statut.ligne);
       setArray(
         tmps
       )
