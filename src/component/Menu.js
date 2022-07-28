@@ -18,8 +18,13 @@ function Menu(){
     })
     .then(response => {
         localStorage.setItem('userid', JSON.stringify(response.data._id));
+        if(response.data.typeuser =="admin"){
+            navigate("/adminmodifierannonces");
+          }else{
+            navigate("/modifierannonces");
+          }
      
-       navigate("/modifierannonces");
+       
     })
     .catch((error) => {
        navigate("/login");
