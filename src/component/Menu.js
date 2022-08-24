@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link,useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 import config from '../config/config';
 
@@ -9,8 +10,11 @@ function Menu(){
     const [isOpen, setIsOpen]= React.useState(false)
     let navigate = useNavigate();
 
+    
+
   const  handlelogin=()=>{
-       
+    
+
        axios.get(config.SERVER+"/user/logintoken", {
         headers: {
             'Authorization' :`bearer ${JSON.parse(localStorage.getItem('keylogtoken'))}`,
@@ -18,6 +22,7 @@ function Menu(){
     })
     .then(response => {
         localStorage.setItem('userid', JSON.stringify(response.data._id));
+        console.log(response.data)
         if(response.data.typeuser =="admin"){
             navigate("/adminmodifierannonces");
           }else{

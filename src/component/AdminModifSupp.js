@@ -1,13 +1,18 @@
 
 import {useEffect, useState} from "react"
+import { useSelector } from "react-redux";
 import axios from 'axios'
 import config from '../config/config'
 import { Link,useNavigate } from 'react-router-dom';
+import { selectTypeUser } from "../feature/userSlice";
 import {Card,CardBody,Button,CardTitle, CardSubtitle,  CardText,FormGroup,Input, Nav,NavItem,NavLink,TabContent,TabPane} from 'reactstrap'
 import moment from "moment";
 import frLocale from "moment/locale/fr";
 
     function AdminModifSupp(){
+
+        const usertypeFromStore = useSelector(selectTypeUser);
+        console.log("usetype:", usertypeFromStore)
 
         const [data, setData]= useState([])
         const [activeTab, setActiveTabe]= useState("1")
