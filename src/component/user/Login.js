@@ -2,7 +2,7 @@ import React from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import axios from 'axios'
-import { SERVER } from "../../config/config";
+import { SERVER,inputTextTitlemaxLength } from "../../config/config";
 import sha256 from "sha256";
 import { useDispatch } from "react-redux";
 import { setUserType } from "../../feature/userSlice";
@@ -97,6 +97,7 @@ function Login(){
                     name="telephone"
                     placeholder="Téléphone"
                     type="text"
+                    maxLength={inputTextTitlemaxLength}
                     onChange={handleChange}
                     />
                 </FormGroup>
@@ -113,6 +114,7 @@ function Login(){
                     name="password"
                     placeholder="Password"
                     type="Password"
+                    maxLength={inputTextTitlemaxLength}
                     onChange={handleChange}
                     />
                 </FormGroup>

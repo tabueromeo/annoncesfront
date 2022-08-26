@@ -42,6 +42,8 @@ const handleChange = (e)=>{
     //on met le booléen pour dire que ça vient d'une recherche
     setisSearch(true)
 
+    console.log(config.SERVER+`/annonces/showbycriteria?${e.target.name}=${e.target.value}`)
+
     axios.get(config.SERVER+`/annonces/showbycriteria?${e.target.name}=${e.target.value}`)
     .then(res => {
       const tmps = res.data.filter(word => word.statut ==config.statut.ligne);

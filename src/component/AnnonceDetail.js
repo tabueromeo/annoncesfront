@@ -14,14 +14,32 @@ const [annonce,setArray] = useState({})
 
 const [annonceSend,setannonceSend] = useState({})
     
+    const updateNberVueAnnonce =(annoncetmp)=>{
+    
+    annoncetmp["nbervue"] = ""+(parseInt(annoncetmp.nbervue)+1)
+
+
+    axios.post(config.SERVER+`/annonces/update`,  annoncetmp )
+    .then(res => {
+
+    }).catch(erreur =>{
+        
+        console.log(erreur);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+    }) 
+
+    }
+
+
     useEffect(() => {
         axios.get(config.SERVER+`/annonces/one?id=`+params.id)
               .then(res => {
                 
                 let tmps = res.data
                 setannonceSend(tmps)
-                    
                 
+                // mise à jour du nombre de vue
+                    
+                updateNberVueAnnonce(tmps)
 
 // début traitement de l'image
                const tabimages= tmps.images.split('==')
@@ -42,10 +60,12 @@ const [annonceSend,setannonceSend] = useState({})
 
                }
                console.log(tmps)
-// fin traitement de l'image
+            // fin traitement de l'image
                 setArray(
                   tmps
                 )
+
+
 
                 
               }).catch(erreur =>{
@@ -53,6 +73,8 @@ const [annonceSend,setannonceSend] = useState({})
                 console.log(erreur);
             })
       },[]);
+
+
 
     return(
         <div className='annonceDetailContainer'>

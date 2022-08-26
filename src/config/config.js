@@ -1,6 +1,6 @@
 module.exports = {
-    SERVER:"https://back.lovons.com:4000",
-    //SERVER:"http://localhost:4000",
+  SERVER:"https://back.lovons.com:4000",
+  //SERVER:"http://localhost:4000",
    rezise :"https://res.cloudinary.com/dzjjthglw/image/fetch/h_400/",
    rezisecarrousel :"https://res.cloudinary.com/dzjjthglw/image/fetch/h_520/",
    defaultlovonsimage:"https://res.cloudinary.com/serpoma/image/upload/v1651135782/lovons-coeur.png",
@@ -25,6 +25,9 @@ module.exports = {
     ligne:"En ligne",
     attente:"En attente",
     supprime:"Supprimée"
-   }
+   },
+   inputTextTitlemaxLength:100,
+   inputTextDescriptionmaxLength:1000,
+   
     
 }

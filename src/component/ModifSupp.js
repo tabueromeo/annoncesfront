@@ -200,6 +200,30 @@ import frLocale from "moment/locale/fr";
    
             
         }
+
+    const handlepay = ()=>{
+     
+        let dataForm ={}
+
+        dataForm[ "service"] = "OVy7AGxUgYpxg6GLbMfDMks5AjE0N9nq"
+        dataForm[ "phonenumber"] = "237699944195"
+        dataForm[ "amount"] = "2000"
+        dataForm[ "notify_url"] = config.SERVER+"/payment"
+
+       console.log("test")
+        axios.post(`https://api.monetbil.com/payment/v1/placePayment`,  dataForm )
+          .then(res => {
+          
+          console.log(res)
+      
+         
+        
+          }).catch(err =>{
+            console.log(err)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+          }) 
+
+
+    }
     
     
            
@@ -212,6 +236,8 @@ import frLocale from "moment/locale/fr";
         >
         Se déconnecter
         </Button>
+        <Button class="" style={{margin:"10px"}} onClick={handlepay}>Pay by Mobile Money</Button>
+
         
                     <Nav tabs>
                     <NavItem>

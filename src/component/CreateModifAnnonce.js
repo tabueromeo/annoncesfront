@@ -248,11 +248,11 @@ handlesubmit = async (e) =>{
 
                                     <div className="form-group">
                                     <Label>Titre</Label>
-                                    <Input type="text" className="form-control" name = "title" onChange ={this.handleChange} />
+                                    <Input type="text" className="form-control" name = "title" maxLength={config.inputTextTitlemaxLength} onChange ={this.handleChange} />
 					                </div>
                                     <div className="form-group">
                                     <Label>Description</Label>
-                                    <textarea className="form-control" type="textarea" rows="7" name = "description" onChange ={this.handleChange}/>
+                                    <textarea className="form-control" type="textarea" rows="7" name = "description" maxLength={config.inputTextDescriptionmaxLength} onChange ={this.handleChange}/>
                                     </div>
                                 
                                     <div>

@@ -144,6 +144,7 @@ function handleSubmit(e){
                     name="telephone"
                     placeholder="Téléphone"
                     type="text"
+                    maxLength={config.inputTextTitlemaxLength}
                     onChange={handleChange}
                     />
                 </FormGroup>
@@ -160,6 +161,7 @@ function handleSubmit(e){
                     name="password"
                     placeholder="Password"
                     type="password"
+                    maxLength={config.inputTextTitlemaxLength}
                     onChange={handleChange}
                     />
                 </FormGroup>
@@ -176,6 +178,7 @@ function handleSubmit(e){
                     name="passwordcm"
                     placeholder="Conifrm password"
                     type="password"
+                    maxLength={config.inputTextTitlemaxLength}
                     onChange={handleChange}
                     style={{borderBlockColor : isPassEgal?"#ced4da":"red"}}
                     />

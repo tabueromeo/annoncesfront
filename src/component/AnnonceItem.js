@@ -7,6 +7,8 @@ import { BiTimeFive} from "react-icons/bi";
 
 function AnnonceItem(props){
 
+    console.log(props.ville)
+
     moment.locale('fr', [frLocale])
     return(
         <div className='div_item_annonce'>
@@ -23,8 +25,10 @@ function AnnonceItem(props){
             <div className='div_contenant_texte_annonce'>
             <CardBody>
             <CardTitle tag="h5" style={{color:"#ee3f89"}}>
-                {props.title+", "+(props.ville?props.ville:"")}
+                {props.title+(props.ville?", "+props.ville:"")}
             </CardTitle>
+            
+
             <CardSubtitle
                 className="mb-2 text-muted"
                 tag="h6"
@@ -32,8 +36,10 @@ function AnnonceItem(props){
                <BiTimeFive/>  Publiée {moment(props.date).fromNow()}
             </CardSubtitle>
             <CardText>
-                {props.description>80?props.description.slice(0,80)+"...":props.description}
+                {props.description.length>80?props.description.slice(0,100)+"...":props.description}
             </CardText>
+
+          
             </CardBody>
             </div>
 
