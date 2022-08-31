@@ -4,10 +4,13 @@ import { Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import axios from 'axios'
 import config, { SERVER } from "../../config/config";
 import sha256 from "sha256";
+import {FaSms,FaWhatsappSquare} from "react-icons/fa";
+import {IoMdCall} from "react-icons/io";
 import { wait } from "@testing-library/user-event/dist/utils";
 
 function SignUp(){
     const [user, setUser] = React.useState({});
+    const [typeContact, setTypeContact] = React.useState(["","",""]);
     const [isPassEgal, setisPassEgal] = React.useState(true);
 
     let navigate = useNavigate();
@@ -48,10 +51,72 @@ function SignUp(){
         
         
     }
+
+function handleTypeContact(e){
+    let temp = typeContact
+    switch (e.target.name) {
+        case "W":
+            temp[0]==="W"?temp[0]="":temp[0]="W";
+            break;
+      case "S":
+            temp[1]==="S"?temp[1]="":temp[1]="S";
+            break;
+      case "C":
+            temp[2]==="C"?temp[2]="":temp[2]="C";
+            break;
+        default:
+            break;
+    }
+
+    console.log(temp.toString())
+}    
     
+
+const typecall = ()=>{
+return(
+    <Form>
+ 
+  <FormGroup
+    check
+    inline
+  >
+    <FaWhatsappSquare/>
+    <Input type="checkbox" name ="W"  onChange={handleTypeContact}/>
+    <Label check>
+    WhatsApp
+    </Label>
+  </FormGroup>
+  <FormGroup
+    check
+    inline
+  >
+    <FaSms/> 
+    <Input type="checkbox" name ="S" onChange={handleTypeContact}/>
+    <Label check>
+    SMS
+    </Label>
+  </FormGroup>
+  <FormGroup
+    check
+    inline
+  >
+    <IoMdCall/>
+    <Input type="checkbox" name ="C" onChange={handleTypeContact}/>
+    <Label check>
+    Call
+    </Label>
+  </FormGroup>
+</Form>
+)
+}
+
+
 function handleSubmit(e){
 
     if(user["password"]===user["passwordcm"]){
+
+        let tempUser = user
+        tempUser["telephone"]=tempUser["telephone"]+"|"+typeContact.toString()
 
         axios.post(SERVER+"/user/signup",user).then((response) => {
             // console.log(response)
@@ -133,8 +198,11 @@ function handleSubmit(e){
             
 
                 <FormGroup>
+                <fieldset style={{border:"solid 1px #ced4da", padding:"6px", borderRadius:"5px"}}>
+              
+                    {typecall()}
                     <Label
-                    for="telelephone"
+                    for="telephone"
                     hidden
                     >
                     Téléphone
@@ -144,9 +212,11 @@ function handleSubmit(e){
                     name="telephone"
                     placeholder="Téléphone"
                     type="text"
+                    style={{border:"none"}}
                     maxLength={config.inputTextTitlemaxLength}
                     onChange={handleChange}
                     />
+                    </fieldset>
                 </FormGroup>
                 {' '}
                 <FormGroup>

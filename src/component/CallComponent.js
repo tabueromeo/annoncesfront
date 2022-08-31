@@ -1,9 +1,9 @@
-import { Card, CardTitle, CardText, Button, Col,CardSubtitle } from 'reactstrap';
+import { Card, CardTitle, CardText, Button, Col,CardSubtitle,FormGroup } from 'reactstrap';
 import React from 'react';
 import axios from 'axios';
 import config from "../config/config";
 import { IoMdCall } from "react-icons/io";
-import { FaRegEye } from "react-icons/fa";
+import { FaRegEye,FaSms,FaWhatsappSquare } from "react-icons/fa";
 import { GiPositionMarker } from "react-icons/gi";
 import { BiTimeFive} from "react-icons/bi";
 import moment from "moment";
@@ -14,6 +14,8 @@ import Modal from 'react-modal';
 
 function CallComponent(props){
   const {title, date,description,telephone, nbervue, nbervuetel,ville} = props.annonce;
+
+  console.log(telephone)
   
   moment.locale('fr', [frLocale])
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -85,7 +87,22 @@ function CallComponent(props){
         style={customStyles}
       >
     
-   <div> <img src="/whatsapp_logo_svg.png" onClick={()=>window.open(config.whatsappapi+telephone)} style = {{ width:"30px"}}/>   {telephone}</div>  
+   <div>
+   <FormGroup> 
+    {telephone?
+                <fieldset style={{border:"solid 1px #ced4da", padding:"6px", borderRadius:"5px"}}>
+              
+              
+              <FaWhatsappSquare onClick={()=>window.open(config.whatsappapi+telephone.split('|')[0])} style = {{ width:"30px"}} visibility={telephone.includes("w")?"visible":"hidden"}/>
+                <FaSms visibility={telephone.includes("s")?"visible":"hidden"}/>
+                <IoMdCall visibility={telephone.includes("c")?"visible":"hidden"}/>
+              
+                    <img src="/whatsapp_logo_svg.png"  onClick={()=>window.open(config.whatsappapi+telephone.split("|")[0])} style = {{ width:"30px"}} visibility={telephone.includes("w")?"visible":"hidden"}/>   {telephone?telephone.split("|")[0]:""}
+                    </fieldset>
+                     :""}
+                </FormGroup>
+
+     </div>  
     
      
   
