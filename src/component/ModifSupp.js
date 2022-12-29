@@ -236,7 +236,7 @@ import frLocale from "moment/locale/fr";
         >
         Se déconnecter
         </Button>
-        <Button class="" style={{margin:"10px"}} onClick={handlepay}>Pay by Mobile Money</Button>
+        {/*<Button class="" style={{margin:"10px"}} onClick={handlepay}>Pay by Mobile Money</Button>*/}
 
         
                     <Nav tabs>

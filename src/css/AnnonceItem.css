@@ -15,6 +15,7 @@
     width: 70vw;
   }
   .image_annonce {
+    max-width: 100%;
     max-height: 200px;
   }
   .div_contenant_image_annonce {
@@ -92,7 +93,8 @@ a:-webkit-any-link {
     max-width: 30%;
   }
   .div_contenant_texte_annonce {
-    min-width: 70%;
+    margin: auto;
+    width: 70%;
   }
 
   .annonceDetailContainer {

@@ -92,11 +92,11 @@ handlesubmit = async (e) =>{
          
           axios.post(config.SERVER+`/annonces/addannonce`,  this.state.dataForm )
             .then(res => {
-            this.closeModal()
-            console.log(res)
-            toast("Annonce ajoutée")
-            this.props.history.push('/modifierannonces/')
-          
+                this.closeModal()
+                console.log(res)
+                toast("Annonce ajoutée")
+                this.props.history.push('/modifierannonces/')
+            
             }).catch(err =>{
                // alert("serveur indisponible")
                 toast("Erreur interne, veuillez réessayer")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
