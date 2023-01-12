@@ -98,8 +98,8 @@ import frLocale from "moment/locale/fr";
         const tabpaneAfficheEnattente = ()=>{
             
             return( data.map((item, index) => {if(item.statut =="En attente"){ 
-             return <Card className='list_item_container_modif_supp' key={index}>
-            <div   className='div_contenant_image_annonce'>
+             return  <Card className='list_item_container_modif_supp' key={index}>
+           <div   className='div_contenant_image_annonce'>
                  <img src = {config.rezise+(item.images.length>5?item.images.split('==')[0]:config.defaultlovonsimage)}  className='image_annonce'/>
              </div>
              <div className='div_contenant_texte_annonce'>
@@ -147,7 +147,7 @@ import frLocale from "moment/locale/fr";
                          </CardText>
 
                          <div className='buttonModifSupprim'>
-                       
+                         <Link to={`/Detail/${item._id}`}><Button className = "detail">Detail</Button></Link>  
                      <Link to = {"/updateannonce/"+item._id}><Button className = "modif">Modifier</Button></Link>
                      <Button className = "suppression_detail" name={item._id} onClick = {deleteAnnonce
                      }>Supprimer</Button> </div>
@@ -156,7 +156,7 @@ import frLocale from "moment/locale/fr";
              </div>
         
          
-         </Card>}}))
+         </Card> }}))
 
         }
 

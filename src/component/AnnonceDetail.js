@@ -42,10 +42,11 @@ const [annonceSend,setannonceSend] = useState({})
                 updateNberVueAnnonce(tmps)
 
 // début traitement de l'image
+console.log(tmps.images)
                const tabimages= tmps.images.split('==')
                let imagesAllTab = []
                
-                console.log(tabimages)
+                if(tmps.images.length>1){
                 for (let index = 0; index < tabimages.length; index++) { 
                 let tempsobject = {
                     key:index,
@@ -53,7 +54,14 @@ const [annonceSend,setannonceSend] = useState({})
                 }
                 imagesAllTab.push(tempsobject)
                };             
-
+            }else{
+                let tempsobject = {
+                    key:0,
+                    src:config.rezisecarrousel+config.defaultlovonsimage
+                }
+                imagesAllTab.push(tempsobject)
+                
+            }
                tmps = {
                    ...tmps,
                    images:imagesAllTab
@@ -75,6 +83,7 @@ const [annonceSend,setannonceSend] = useState({})
       },[]);
 
 
+console.log(annonce.images)
 
     return(
         <div className='annonceDetailContainer'>
@@ -83,7 +92,7 @@ const [annonceSend,setannonceSend] = useState({})
             <div className='entetePageDetail'>
             <div className='annonceDetailItemCarroussel'>
                 <UncontrolledCarousel
-                items={annonce.images?annonce.images:[]}
+                items={annonce.images?annonce.images:[config.wareframeParagraph]}
                 />
 
             </div>    

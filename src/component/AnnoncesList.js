@@ -19,6 +19,10 @@ const [isSearch,setisSearch] = useState(false)
 const perPage = 5;
 
 
+const triggerPagination = (tmps)=>{
+  const tpage = tmps.length/perPage
+  setTotalpage(Math.ceil(tpage))
+}
 useEffect(() => {
   axios.get(config.SERVER+`/annonces/readannonce`)
         .then(res => {
@@ -26,8 +30,8 @@ useEffect(() => {
           
           //on remet le boolean pour dire que ça ne vient pas d'une recherche
           setisSearch(false)
-          const tpage = tmps.length/perPage
-          setTotalpage(Math.ceil(tpage))
+          triggerPagination(tmps)
+
           setArray(
             tmps
           )
@@ -41,15 +45,15 @@ const handleChange = (e)=>{
   if(e.target.name&&e.target.value){
     //on met le booléen pour dire que ça vient d'une recherche
     setisSearch(true)
-
-    console.log(config.SERVER+`/annonces/showbycriteria?${e.target.name}=${e.target.value}`)
-
     axios.get(config.SERVER+`/annonces/showbycriteria?${e.target.name}=${e.target.value}`)
     .then(res => {
       const tmps = res.data.filter(word => word.statut ==config.statut.ligne);
+      triggerPagination(tmps)
       setArray(
         tmps
       )
+      setActivePage(1)
+      
     }).catch(erreur =>{
       //alert("serveur indisponible")
       console.log(erreur);
@@ -138,11 +142,11 @@ setActivePage(data.activePage)
         })):(!isSearch?( <Segment>
           <Loader disabled />
       
-          <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+          <Image src={config.wareframeParagraph} />
 
-          <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+          <Image src={config.wareframeParagraph} />
 
-          <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+          <Image src={config.wareframeParagraph} />
         </Segment>):<ErrorPage/>)} 
        
         </CardGroup>

@@ -5,6 +5,7 @@ module.exports = {
    rezisecarrousel :"https://res.cloudinary.com/dzjjthglw/image/fetch/h_520/",
    defaultlovonsimage:"https://res.cloudinary.com/serpoma/image/upload/v1651135782/lovons-coeur.png",
    whatsappapi:"https://api.whatsapp.com/send/?phone=+237",
+   wareframeParagraph:"https://react.semantic-ui.com/images/wireframe/paragraph.png",
    title:{
     thot:"Rencontre hot",
     tesc:"Escorte",

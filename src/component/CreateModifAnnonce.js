@@ -95,10 +95,11 @@ handlesubmit = async (e) =>{
                 this.closeModal()
                 console.log(res)
                 toast("Annonce ajoutée")
-                this.props.history.push('/modifierannonces/')
+               // this.props.history.push('/modifierannonces/')
             
             }).catch(err =>{
                // alert("serveur indisponible")
+               console.log(err)
                 toast("Erreur interne, veuillez réessayer")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
             })      
         

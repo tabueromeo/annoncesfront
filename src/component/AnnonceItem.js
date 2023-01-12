@@ -7,7 +7,7 @@ import { BiTimeFive} from "react-icons/bi";
 
 function AnnonceItem(props){
 
-    console.log(props.ville)
+
 
     moment.locale('fr', [frLocale])
     return(
