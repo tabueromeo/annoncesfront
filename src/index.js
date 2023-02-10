@@ -4,16 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from "react-router-dom"
-import './index.css'
-import store from './app/store'
-import { Provider } from 'react-redux'
-
+import { BrowserRouter } from 'react-router-dom';
+import './index.css';
+import store from './app/store';
+import { Provider } from 'react-redux';
+/**
+ * test CI-CD vi GCP
+ */
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
-    <App />
-  </Provider>
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById('root')
 );
