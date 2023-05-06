@@ -2,7 +2,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import { Navigate } from "react-router-dom";
-import { config } from "../../config/config";
+import config  from "../../config/config";
 
 class AddCategorie extends Component {
 	constructor(props) {

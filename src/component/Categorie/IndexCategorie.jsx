@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import { config } from "../../config/config";
+import  config  from "../../config/config";
 import axios from "axios";
 
 class IndexCategorie extends Component {

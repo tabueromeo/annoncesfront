@@ -2,11 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import axios from "axios";
-import config, { SERVER } from "../../config/config";
+import config from "../../config/config";
 import sha256 from "sha256";
 import { FaSms, FaWhatsappSquare } from "react-icons/fa";
 import { IoMdCall } from "react-icons/io";
-import { wait } from "@testing-library/user-event/dist/utils";
+
 
 function SignUp() {
 	const [user, setUser] = React.useState({});
@@ -91,7 +91,7 @@ function SignUp() {
 				tempUser["telephone"] =
 					tempUser["telephone"] + "|" + typeContact.toString();
 
-				axios.post(SERVER + "/user/signup", user).then(
+				axios.post(config.SERVER + "/user/signup", user).then(
 					(response) => {
 						// console.log(response)
 

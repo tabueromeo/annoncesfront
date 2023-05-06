@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   //SERVER: 'http://localhost:4000',
   SERVER: 'https://civic-matrix-377214.oa.r.appspot.com',
   rezise: 'https://res.cloudinary.com/dzjjthglw/image/fetch/h_400/',
@@ -32,3 +32,6 @@ module.exports = {
   inputTextTitlemaxLength: 100,
   inputTextDescriptionmaxLength: 1000,
 };
+
+
+export default config;

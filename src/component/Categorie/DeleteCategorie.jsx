@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Navigate } from "react-router-dom";
-import { cherche } from "../../config/config";
+
 
 class DeleteCategorie extends Component {
 	constructor(props) {

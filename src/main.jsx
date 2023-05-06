@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom/client'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import App from "./App";
@@ -11,13 +11,12 @@ import { Provider } from "react-redux";
 /**
  * test CI-CD vi GCP
  */
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
 	<BrowserRouter>
 		<Provider store={store}>
 			<App />
 		</Provider>
-	</BrowserRouter>,
-	document.getElementById("root")
+	</BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
